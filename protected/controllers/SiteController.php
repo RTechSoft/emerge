@@ -72,30 +72,62 @@ class SiteController extends Controller
 		$this->render('contact',array('model'=>$model));
 	}
 
+	public function actionRegister() {
+		$modelUser = new Users;
+		$modelAgency = new Agencies;
+
+		if(isset($_POST['Users']) && isset($_POST['btnRegisterUser'])) {
+			$modelUser->attributes = $_POST['Users'];
+
+			if($modelUser->validate() && $modelUser->save()) {
+				echo 'user registration success';
+			} else {
+				echo 'user registration failed';
+			}
+		}
+
+		if(isset($_POST['Agencies']) && isset($_POST['btnRegisterAgency'])) {
+			$modelAgency->attributes = $_POST['Agencies'];
+
+			if($modelAgency->validate() && $modelAgency->save()) {
+				echo 'agency registration success';
+			} else {
+				echo  'agency registration failed';
+			}
+		}
+
+		$this->render('register', array('modelUser'=>$modelUser, 'modelAgency'=>$modelAgency));
+	}
+
 	/**
 	 * Displays the login page
 	 */
 	public function actionLogin()
 	{
-		$model=new LoginForm;
+		$modelUsers = new Users;
+		$modelAgencies = new Agencies;
 
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
+		if(isset($_POST['Users']) && isset($_POST['btnLoginUser'])) {
+			$modelUsers->attributes = $_POST['Users'];
+
+			if($modelUsers->validate() && $modelUsers->login()) {
+				echo 'user login success';
+			} else {
+				echo 'user login failed';
+			}
 		}
 
-		// collect user input data
-		if(isset($_POST['LoginForm']))
-		{
-			$model->attributes=$_POST['LoginForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+		if(isset($_POST['Agencies']) && isset($_POST['btnLoginAgency'])) {
+			$modelAgencies->attributes = $_POST['Agencies'];
+
+			if($modelAgencies->validate() && $modelAgencies->login()) {
+				echo 'agency login success';
+			} else {
+				echo 'agency login failed';
+			}
 		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
+
+		$this->render('login', array('modelUsers'=>$modelUsers, 'modelAgencies'=>$modelAgencies));
 	}
 
 	/**
