@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.4.10.1deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 08, 2014 at 05:59 PM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Generation Time: May 09, 2014 at 12:57 AM
+-- Server version: 5.5.37
+-- PHP Version: 5.3.10-1ubuntu3.11
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -88,6 +88,8 @@ CREATE TABLE IF NOT EXISTS `help_requests` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `primary_username` varchar(255) NOT NULL,
+  `secondary_username` varchar(255) NOT NULL,
   `user_firstname` varchar(100) NOT NULL,
   `user_middlename` varchar(100) NOT NULL,
   `user_lastname` varchar(100) NOT NULL,
