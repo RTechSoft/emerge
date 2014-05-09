@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
 <div class="container" id="page">
 
 	<div id="header">
@@ -54,6 +53,8 @@
 	</div><!-- footer -->
 
 </div><!-- page -->
-
+<?php
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/map.js');
+?>
 </body>
 </html>

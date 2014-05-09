@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.10.1deb1
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 09, 2014 at 12:57 AM
--- Server version: 5.5.37
--- PHP Version: 5.3.10-1ubuntu3.11
+-- Generation Time: May 09, 2014 at 04:48 PM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,6 +23,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `active_assets`
+--
+
+CREATE TABLE IF NOT EXISTS `active_assets` (
+  `agency_id` int(11) NOT NULL,
+  `asset_id` int(11) NOT NULL,
+  `help_log_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `agencies`
 --
 
@@ -35,8 +48,16 @@ CREATE TABLE IF NOT EXISTS `agencies` (
   `agency_type` int(11) NOT NULL,
   `location_scope` varchar(100) NOT NULL,
   `agency_verified` int(11) NOT NULL,
+  `agency_photo` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `agencies`
+--
+
+INSERT INTO `agencies` (`id`, `agency_username`, `agency_password`, `agency_name`, `agency_location`, `agency_type`, `location_scope`, `agency_verified`, `agency_photo`) VALUES
+(1, 'mmdc01', 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e', 'Makati Medical Center', 'Creekside Amorsolo Hotel, Legazpi Street, Makati, Philippines', 0, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -47,6 +68,20 @@ CREATE TABLE IF NOT EXISTS `agencies` (
 CREATE TABLE IF NOT EXISTS `agency_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `asset_manager`
+--
+
+CREATE TABLE IF NOT EXISTS `asset_manager` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `agency_id` int(11) NOT NULL,
+  `asset` text NOT NULL,
+  `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -99,8 +134,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_mobile_verification_code` int(11) NOT NULL,
   `user_status` int(11) NOT NULL,
   `registration_type` int(11) NOT NULL,
+  `user_photo` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `primary_username`, `secondary_username`, `user_firstname`, `user_middlename`, `user_lastname`, `user_mobile`, `user_password`, `user_address`, `user_mobile_verification_code`, `user_status`, `registration_type`, `user_photo`) VALUES
+(2, '09466886843', 'rienier31', 'Rienier', 'Santos', 'Patron', 0, 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e', '', 0, 0, 0, '0');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
