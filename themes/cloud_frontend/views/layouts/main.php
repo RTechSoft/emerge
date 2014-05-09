@@ -31,7 +31,7 @@
 	<?php
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/jquery-1.9.1.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/bootstrap-dist/js/bootstrap.min.js');
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/waypoint/waypoint.min.js');
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/waypoint/waypoints.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/navmaster/jquery.scrollTo.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/navmaster/jquery.nav.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/isotope/jquery.isotope.min.js');

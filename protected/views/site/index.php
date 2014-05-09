@@ -34,97 +34,97 @@
 		<div id="filter-items" class="row">
 			<div class="col xs-12 col-sm-4 design item">
 				<div class="filter-content">
-					<img src="img/gallery/1.png" alt="" class="img-responsive" />
+					<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/1.png" alt="" class="img-responsive" />
 					<div class="image-content">
 						<h4>Image Title</h4>
 						<p class="hidden-xs hidden-sm">
 							For faster mobile-friendly development, use these utility.
 						</p>
-						<a href="img/gallery/1.png" class="btn btn-sm btn-warning colorbox-button">Know More</a>
+						<a href="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/1.png" class="btn btn-sm btn-warning colorbox-button">Know More</a>
 					</div>
 				</div>
 			</div>
 			<div class="col xs-12 col-sm-4 videos item">
 				<div class="filter-content">
-					<img src="img/gallery/2.jpg" alt="" class="img-responsive" />
+					<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/2.jpg" alt="" class="img-responsive" />
 					<div class="image-content">
 						<h4>Image Title</h4>
 						<p class="hidden-xs hidden-sm">
 							For faster mobile-friendly development, use these utility.
 						</p>
-						<a href="img/gallery/2.jpg" class="btn btn-sm btn-warning colorbox-button">Know More</a>
+						<a href="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/2.jpg" class="btn btn-sm btn-warning colorbox-button">Know More</a>
 					</div>
 				</div>
 			</div>
 			<div class="col xs-12 col-sm-4 banners item">
 				<div class="filter-content">
-					<img src="img/gallery/3.png" alt="" class="img-responsive" />
+					<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/3.png" alt="" class="img-responsive" />
 					<div class="image-content">
 						<h4>Image Title</h4>
 						<p class="hidden-xs hidden-sm">
 							For faster mobile-friendly development, use these utility.
 						</p>
-						<a href="img/gallery/3.png" class="btn btn-sm btn-warning colorbox-button">Know More</a>
+						<a href="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/3.png" class="btn btn-sm btn-warning colorbox-button">Know More</a>
 					</div>
 				</div>
 			</div>
 			<div class="col xs-12 col-sm-4 videos item">
 				<div class="filter-content">
-					<img src="img/gallery/4.png" alt="" class="img-responsive" />
+					<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/4.png" alt="" class="img-responsive" />
 					<div class="image-content">
 						<h4>Image Title</h4>
 						<p class="hidden-xs hidden-sm">
 							For faster mobile-friendly development, use these utility.
 						</p>
-						<a href="img/gallery/4.png" class="btn btn-sm btn-warning colorbox-button">Know More</a>
+						<a href="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/4.png" class="btn btn-sm btn-warning colorbox-button">Know More</a>
 					</div>
 				</div>
 			</div>
 			<div class="col xs-12 col-sm-4 design item">
 				<div class="filter-content">
-					<img src="img/gallery/5.png" alt="" class="img-responsive" />
+					<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/5.png" alt="" class="img-responsive" />
 					<div class="image-content">
 						<h4>Image Title</h4>
 						<p class="hidden-xs hidden-sm">
 							For faster mobile-friendly development, use these utility.
 						</p>
-						<a href="img/gallery/5.png" class="btn btn-sm btn-warning colorbox-button">Know More</a>
+						<a href="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/5.png" class="btn btn-sm btn-warning colorbox-button">Know More</a>
 					</div>
 				</div>
 			</div>
 			<div class="col xs-12 col-sm-4 banners item">
 				<div class="filter-content">
-					<img src="img/gallery/8.png" alt="" class="img-responsive" />
+					<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/8.png" alt="" class="img-responsive" />
 					<div class="image-content">
 						<h4>Image Title</h4>
 						<p class="hidden-xs hidden-sm">
 							For faster mobile-friendly development, use these utility.
 						</p>
-						<a href="img/gallery/8.png" class="btn btn-sm btn-warning colorbox-button">Know More</a>
+						<a href="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/8.png" class="btn btn-sm btn-warning colorbox-button">Know More</a>
 					</div>
 				</div>
 			</div>
 			<div class="col xs-12 col-sm-4 banners item">
 				<div class="filter-content">
-					<img src="img/gallery/7.jpg" alt="" class="img-responsive" />
+					<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/7.jpg" alt="" class="img-responsive" />
 					<div class="image-content">
 						<h4>Image Title</h4>
 						<p class="hidden-xs hidden-sm">
 							For faster mobile-friendly development, use these utility.
 						</p>
-						<a href="img/gallery/7.jpg" class="btn btn-sm btn-warning colorbox-button">Know More</a>
+						<a href="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/7.jpg" class="btn btn-sm btn-warning colorbox-button">Know More</a>
 					</div>
 				</div>
 			</div>
 			<div class="col xs-12 col-sm-4 videos item">
 				<div class="filter-content">
-					<img src="img/gallery/2.jpg" alt="" class="img-responsive" />
+					<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/2.jpg" alt="" class="img-responsive" />
 					<div class="image-content">
 						<h4>Image Title</h4>
 						<p class="hidden-xs hidden-sm">
 							For faster mobile-friendly development, use these utility.
 						</p>
-						<a href="img/gallery/2.jpg" class="btn btn-sm btn-warning colorbox-button">Know More</a>
+						<a href="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/gallery/2.jpg" class="btn btn-sm btn-warning colorbox-button">Know More</a>
 					</div>
 				</div>
 			</div>
@@ -272,13 +272,13 @@
 				<div class="carousel-caption">
 				  <div class="row">
 					<div class="circular col-md-6">
-						<img src="img/testimonials/headshot1.jpg" alt="headshot #1" />
+						<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/testimonials/headshot1.jpg" alt="headshot #1" />
 						<h3>Jane Richards</h3>
 						<p>"He found himself at first in a thoroughly European quarter, the houses having low fronts, and being adorned with verandas, beneath which he caught glimpses of neat peristyles. This quarter occupied, with its streets, squares, docks, and warehouses."</p>
 						<h4>www.firstname.com</h4>
 					</div>
 					<div class="circular col-md-6">
-						<img src="img/testimonials/headshot2.jpg" alt="headshot #2" />
+						<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/testimonials/headshot2.jpg" alt="headshot #2" />
 						<h3>Shelly Doe</h3>
 						<p>"The civil Emperor, before the Mikado, the spiritual Emperor, absorbed his office in his own. The Carnatic anchored at the quay near the custom-house, in the midst of a crow-fluidd of ships bearing the flags of all nations. Passepartout went."</p>
 						<h4>www.secondname.com</h4>
@@ -292,13 +292,13 @@
 				<div class="carousel-caption">
 				  <div class="row">
 					<div class="circular col-md-6">
-						<img src="img/testimonials/headshot3.jpg" alt="headshot #3" />
+						<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/testimonials/headshot3.jpg" alt="headshot #3" />
 						<h3>Jim Doe</h3>
 						<p>"He found himself at first in a thoroughly European quarter, the houses having low fronts, and being adorned with verandas, beneath which he caught glimpses of neat peristyles. This quarter occupied, with its streets, squares, docks, and warehouses."</p>
 						<h4>www.thirdname.com</h4>
 					</div>
 					<div class="circular col-md-6">
-						<img src="img/testimonials/headshot4.jpg" alt="headshot #4" />
+						<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/testimonials/headshot4.jpg" alt="headshot #4" />
 						<h3>Kim Doe</h3>
 						<p>"The civil Emperor, before the Mikado, the spiritual Emperor, absorbed his office in his own. The Carnatic anchored at the quay near the custom-house, in the midst of a crow-fluidd of ships bearing the flags of all nations. Passepartout went."</p>
 						<h4>www.lastname.com</h4>
@@ -312,13 +312,13 @@
 				<div class="carousel-caption">
 				  <div class="row">
 					<div class="circular col-md-6">
-						<img src="img/testimonials/headshot5.jpg" alt="headshot #4" />
+						<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/testimonials/headshot5.jpg" alt="headshot #4" />
 						<h3>Liz Doe</h3>
 						<p>"He found himself at first in a thoroughly European quarter, the houses having low fronts, and being adorned with verandas, beneath which he caught glimpses of neat peristyles. This quarter occupied, with its streets, squares, docks, and warehouses."</p>
 						<h4>www.doefirst.com</h4>
 					</div>
 					<div class="circular col-md-6">
-						<img src="img/testimonials/headshot6.jpg" alt="headshot #5" />
+						<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/testimonials/headshot6.jpg" alt="headshot #5" />
 						<h3>Nat Doe</h3>
 						<p>"The civil Emperor, before the Mikado, the spiritual Emperor, absorbed his office in his own. The Carnatic anchored at the quay near the custom-house, in the midst of a crow-fluidd of ships bearing the flags of all nations. Passepartout went."</p>
 						<h4>www.natgeo.com</h4>
@@ -351,7 +351,7 @@
 		<div class="row">
 			<div class="col-md-3 col-sm-6">
 				<div class="team">
-					<img alt="" src="img/img1.jpg">
+					<img alt="" src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/img1.jpg">
 					<h3>Ruby Burrow</h3>
 					<h4>Production Manager</h4>
 					<p>I just want to argue I saw it chewing the orange peels I grow on my lawn, so I deleted it from my book.</p>
@@ -362,7 +362,7 @@
 			</div>
 			<div class="col-md-3 col-sm-6">
 				<div class="team">
-					<img alt="" src="img/img2.jpg">
+					<img alt="" src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/img2.jpg">
 					<h3>Molly Debris</h3>
 					<h4>Assistant Buyer</h4>
 					<p>My waffle ate the banana last time. I saw it with my very eyes I tell you. I enjoy spinning chair on cheese.</p>
@@ -373,7 +373,7 @@
 			</div>
 			<div class="col-md-3 col-sm-6">
 				<div class="team">
-					<img alt="" src="img/img3.jpg">
+					<img alt="" src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/img3.jpg">
 					<h3>Dave Jose</h3>
 					<h4>Brand Manager</h4>
 					<p>After eating that pie I just want to argue you may go smell the roses of the divine heaven.</p>
@@ -384,7 +384,7 @@
 			</div>
 			<div class="col-md-3 col-sm-6">
 				<div class="team">
-					<img alt="" src="img/img4.jpg">
+					<img alt="" src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/img4.jpg">
 					<h3>Rachael Buffay</h3>
 					<h4>Design Head</h4>
 					<p>What a donkey your unicorn is. Give the penguin back its credit card right now. I just want to argue.</p>
