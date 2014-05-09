@@ -16,11 +16,10 @@
  * @property integer $user_mobile_verification_code
  * @property integer $user_status
  * @property integer $registration_type
+ * @property string $user_photo
  */
 class Users extends CActiveRecord
 {
-	private $_identity;
-	public $rememberMe;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -37,13 +36,13 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			// array('primary_username, secondary_username, user_firstname, user_middlename, user_lastname, user_mobile, user_password, user_address, user_mobile_verification_code, user_status, registration_type', 'required'),
+			array('primary_username, secondary_username, user_firstname, user_middlename, user_lastname, user_mobile, user_password, user_address, user_mobile_verification_code, user_status, registration_type, user_photo', 'required'),
 			array('user_mobile, user_mobile_verification_code, user_status, registration_type', 'numerical', 'integerOnly'=>true),
 			array('primary_username, secondary_username', 'length', 'max'=>255),
 			array('user_firstname, user_middlename, user_lastname', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, primary_username, secondary_username, user_firstname, user_middlename, user_lastname, user_mobile, user_password, user_address, user_mobile_verification_code, user_status, registration_type', 'safe', 'on'=>'search'),
+			array('id, primary_username, secondary_username, user_firstname, user_middlename, user_lastname, user_mobile, user_password, user_address, user_mobile_verification_code, user_status, registration_type, user_photo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,6 +75,7 @@ class Users extends CActiveRecord
 			'user_mobile_verification_code' => 'User Mobile Verification Code',
 			'user_status' => 'User Status',
 			'registration_type' => 'Registration Type',
+			'user_photo' => 'User Photo',
 		);
 	}
 
@@ -109,6 +109,7 @@ class Users extends CActiveRecord
 		$criteria->compare('user_mobile_verification_code',$this->user_mobile_verification_code);
 		$criteria->compare('user_status',$this->user_status);
 		$criteria->compare('registration_type',$this->registration_type);
+		$criteria->compare('user_photo',$this->user_photo,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

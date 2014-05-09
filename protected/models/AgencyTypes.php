@@ -1,27 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "agencies".
+ * This is the model class for table "agency_types".
  *
- * The followings are the available columns in table 'agencies':
+ * The followings are the available columns in table 'agency_types':
  * @property integer $id
- * @property string $agency_username
- * @property string $agency_password
- * @property string $agency_name
- * @property string $agency_location
- * @property integer $agency_type
- * @property string $location_scope
- * @property integer $agency_verified
- * @property string $agency_photo
+ * @property string $type
  */
-class Agencies extends CActiveRecord
+class AgencyTypes extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'agencies';
+		return 'agency_types';
 	}
 
 	/**
@@ -32,12 +25,11 @@ class Agencies extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('agency_username, agency_password, agency_name, agency_location, agency_type, location_scope, agency_verified, agency_photo', 'required'),
-			array('agency_type, agency_verified', 'numerical', 'integerOnly'=>true),
-			array('agency_username, agency_name, location_scope', 'length', 'max'=>100),
+			array('type', 'required'),
+			array('type', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, agency_username, agency_password, agency_name, agency_location, agency_type, location_scope, agency_verified, agency_photo', 'safe', 'on'=>'search'),
+			array('id, type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,14 +51,7 @@ class Agencies extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'agency_username' => 'Agency Username',
-			'agency_password' => 'Agency Password',
-			'agency_name' => 'Agency Name',
-			'agency_location' => 'Agency Location',
-			'agency_type' => 'Agency Type',
-			'location_scope' => 'Location Scope',
-			'agency_verified' => 'Agency Verified',
-			'agency_photo' => 'Agency Photo',
+			'type' => 'Type',
 		);
 	}
 
@@ -89,14 +74,7 @@ class Agencies extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('agency_username',$this->agency_username,true);
-		$criteria->compare('agency_password',$this->agency_password,true);
-		$criteria->compare('agency_name',$this->agency_name,true);
-		$criteria->compare('agency_location',$this->agency_location,true);
-		$criteria->compare('agency_type',$this->agency_type);
-		$criteria->compare('location_scope',$this->location_scope,true);
-		$criteria->compare('agency_verified',$this->agency_verified);
-		$criteria->compare('agency_photo',$this->agency_photo,true);
+		$criteria->compare('type',$this->type,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -107,7 +85,7 @@ class Agencies extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Agencies the static model class
+	 * @return AgencyTypes the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
