@@ -41,6 +41,7 @@
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/jQuery-Cookie/jquery.cookie.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/gritter/js/jquery.gritter.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/script.js');
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/map.js');
 	?>
 	<script>
 		jQuery(document).ready(function() {
