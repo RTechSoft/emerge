@@ -53,8 +53,6 @@
 	</div><!-- footer -->
 
 </div><!-- page -->
-<?php
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/map.js');
-?>
+
 </body>
 </html>

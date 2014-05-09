@@ -1,5 +1,7 @@
 EMERGE = {};
 EMERGE.map = {
+	markers:[],
+	
 	getAgencyLocation:function(address){
 		var geocoder;
 		var map;
