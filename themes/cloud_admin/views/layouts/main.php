@@ -22,7 +22,7 @@
 	<?php $this->renderPartial('//layouts/header'); ?>
 	
 	<!-- main content -->
-	<div id="page">
+	<section id="page">
 		<?php $this->renderPartial('//layouts/sidebar'); ?>
 		<div id="main-content">
 			<div class="container">
@@ -33,7 +33,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
+	
 	<?php
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/jquery/jquery-2.0.3.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js');
@@ -46,20 +47,20 @@
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/sparklines/jquery.sparkline.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/jquery-easing/jquery.easing.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/easypiechart/jquery.easypiechart.min.js');
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.min.js');
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.time.min.js');
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.selection.min.js');
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.resize.min.js');
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.pie.min.js');
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.stack.min.js');
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.crosshair.min.js');
+	// Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.min.js');
+	// Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.time.min.js');
+	// Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.selection.min.js');
+	// Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.resize.min.js');
+	// Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.pie.min.js');
+	// Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.stack.min.js');
+	// Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/flot/jquery.flot.crosshair.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/jquery-todo/js/paddystodolist.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/timeago/jquery.timeago.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/fullcalendar/fullcalendar.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/jQuery-Cookie/jquery.cookie.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/gritter/js/jquery.gritter.min.js');
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/script.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/map.js');
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/script.js');
 	?>
 	<script>
 		jQuery(document).ready(function() {

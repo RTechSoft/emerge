@@ -13,7 +13,9 @@
 			</div>
 			<!-- sidebar collapse -->
 			<div id="sidebar-collapse" class="sidebar-collapse btn">
-				<i class="fa fa-bars" data-icon1="fa fa-bars" data-icon2="fa fa-bars"></i>
+				<i class="fa fa-bars" 
+					data-icon1="fa fa-bars" 
+					data-icon2="fa fa-bars" ></i>
 			</div>
 		</div>
 	
@@ -21,6 +23,7 @@
 		<ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
 			<li class="dropdown">
 				<a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Team View">
+					<i class="fa fa-users"></i>
 					<span class="name">Team Status</span>
 					<i class="fa fa-angle-down"></i>
 				</a>
