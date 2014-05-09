@@ -25,9 +25,6 @@
 		<?php echo $content; ?>
 	</div>
 
-	<!-- footer -->
-	<?php $this->renderPartial('//layouts/footer'); ?>
-
 	<?php
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/jquery-1.9.1.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/bootstrap-dist/js/bootstrap.min.js');
@@ -36,6 +33,7 @@
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/navmaster/jquery.nav.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/isotope/jquery.isotope.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/colorbox/jquery.colorbox.min.js');
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/script.js');
 	?>
 </body>
 </html>	
