@@ -16,6 +16,8 @@
  */
 class Agencies extends CActiveRecord
 {
+	private $_identity;
+	public $rememberMe;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -32,7 +34,7 @@ class Agencies extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('agency_username, agency_password, agency_name, agency_location, agency_type, location_scope, agency_verified, agency_photo', 'required'),
+			// array('agency_username, agency_password, agency_name, agency_location, agency_type, location_scope, agency_verified, agency_photo', 'required'),
 			array('agency_type, agency_verified', 'numerical', 'integerOnly'=>true),
 			array('agency_username, agency_name, location_scope', 'length', 'max'=>100),
 			// The following rule is used by search().
@@ -112,5 +114,30 @@ class Agencies extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+	public function beforeSave() {
+		$TPassword = new TPassword();
+		$this->agency_password = $TPassword->hash($this->agency_password);
+                                                                                                                                                                                                                                                                                                                                                                      
+		return true;
+	}
+
+	public function login() {
+		$TPassword = new TPassword();
+		$this->setAttribute('agency_password', $TPassword->hash($this->agency_password));
+
+		if($this->_identity===null) {
+			$this->_identity = new UserIdentity($this->agency_username, $this->agency_password);
+			$this->_identity->authenticate();
+		}
+
+		if($this->_identity->errorCode===UserIdentity::ERROR_NONE) {
+			$duration=$this->rememberMe ? 3600*24*30 : 0;
+			Yii::app()->user->login($this->_identity, $duration);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
