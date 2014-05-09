@@ -121,7 +121,7 @@ class SiteController extends Controller
 			$modelAgencies->attributes = $_POST['Agencies'];
 
 			if($modelAgencies->validate() && $modelAgencies->login()) {
-				echo 'agency login success';
+				$this->redirect(array('agency/dashboard'));
 			} else {
 				echo 'agency login failed';
 			}
