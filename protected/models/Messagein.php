@@ -134,7 +134,7 @@ class Messagein extends CActiveRecord
 	}
 	
 	public static function sendSms($message,$num){
-		$url = "http://mui4ever:9710/http/send-message?to=".$num."&message=".$message."&gateway=Emerge";
+		$url = "http://localhost:9710/http/send-message?to=".$num."&message=".$message."&gateway=Emerge";
 		
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
@@ -148,7 +148,46 @@ class Messagein extends CActiveRecord
 
 	public static function updateSmsStatus($id){
 		$updateStatus = Messagein::model()->findByAttributes(array('Id'=>$id));
-		$updateStatus->Reply_status=1;
+		$updateStatus->Status=1;
 		$updateStatus->save();
 	}
+
+	//users.php
+	public static function signUpUserFromMobile($value){
+		$mobileSignUp = new Users();
+		$mobileSignUp->primary_username = $value['number'];
+		$mobileSignUp->user_password = "1234";
+		$mobileSignUp->user_firstname = $value['fname'];
+		$mobileSignUp->user_lastname = $value['lname'];
+		$mobileSignUp->registration_type = 2;
+		$mobileSignUp->user_mobile = $value['number'];
+		$mobileSignUp->save();
+
+	}
+	//end
+
+	//helprequest.php
+	public static function addHelpRequest($value){
+		$help = new HelpRequests();
+		$help->sender_number = $value['number'];
+		$help->location_scope = $value['location_scope'];
+		if($value['sender_location']){
+			$help->sender_location = $value['sender_location'];
+		}
+		if($value['alt_location']){
+			$help->alt_location = $value['alt_location'];
+		}
+		$help->status = 0;
+		$help->save();
+	}
+	//end
+
+	//helplogs.php
+	public static function completeHelpLog($id){
+		$updateStatus = HelpLogs::model()->findByPk($id);
+		$updateStatus->status=1;
+		$updateStatus->save();
+	}
+	//end
+
 }
