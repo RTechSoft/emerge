@@ -1,6 +1,6 @@
 <section id="header">
 <div class="pushbutt"></div>
-	<img src="images/buttonActive.png" style="margin-top:-100px; margin-left:auto; margin-right:auto;"></a>			
+	<center><img src="images/buttonActive.png" style="margin-top:-100px;"></a></center>
 </section>
 <!--/HEADER -->
 <!-- NAV-BAR -->

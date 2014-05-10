@@ -6110,6 +6110,10 @@ ul.list-inline {
   /* Image credit: http://farm6.staticflickr.com/5274/5810163712_53996cbd0a_o.jpg */
 
   background: url(../../../../images/frontBG2.png) 0 0 no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-position: left;
   height: 100%;
   overflow: hidden;
@@ -6759,3 +6763,7 @@ i.darkred:hover {
 
 /*JEPP*/
 
+.imageCenter{
+  margin-left: auto;
+  margin-right: auto;
+}
