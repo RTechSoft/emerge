@@ -20,31 +20,56 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
 		$checker = Users::usernameChecker($this->username);
+		
 		if($checker == 'mobile') {
 			$userRecord = Users::model()->findByAttributes(array('primary_username'=>$this->username));
-		} else if($checker == 'username') {
-			$userRecord = Users::model()->findByAttributes(array('secondary_username'=>$this->username));
-		} else if($checker == 'agency') {
-			$userRecord = Agencies::model()->findByAttributes(array('agency_username'=>$this->username));
-		}
 
-		if($userRecord===null) {
-			return $this->errorCode = self::ERROR_USERNAME_INVALID;
-		}
+			if($userRecord===null) {
+				return $this->errorCode = self::ERROR_USERNAME_INVALID;
+			} else if($userRecord->user_password != $this->password) {
+				return $this->errorCode = self::ERROR_PASSWORD_INVALID;
+			}
 
-		$this->_id = $userRecord->id;
-		$this->setState('userId', $userRecord->id);
-		if($checker == 'mobile' || $checker == 'username') {
+			$this->_id = $userRecord->id;
+			$this->setState('userId', $userRecord->id);
 			$this->setState('username', $userRecord->secondary_username);
 			$this->setState('name', $userRecord->user_firstname . ' ' . $userRecord->user_lastname);
 			$this->setState('userType', 1);
-		} else if($checker === 'agency') {
+
+			return $this->errorCode=self::ERROR_NONE;
+		} else if($checker == 'username') {
+			$userRecord = Users::model()->findByAttributes(array('secondary_username'=>$this->username));
+
+			if($userRecord===null) {
+				return $this->errorCode = self::ERROR_USERNAME_INVALID;
+			} else if($userRecord->user_password != $this->password) {
+				return $this->errorCode = self::ERROR_PASSWORD_INVALID;
+			}
+
+			$this->_id = $userRecord->id;
+			$this->setState('userId', $userRecord->id);
+			$this->setState('username', $userRecord->secondary_username);
+			$this->setState('name', $userRecord->user_firstname . ' ' . $userRecord->user_lastname);
+			$this->setState('userType', 1);
+
+			return $this->errorCode=self::ERROR_NONE;
+		} else if($checker == 'agency') {
+			$userRecord = Agencies::model()->findByAttributes(array('agency_username'=>$this->username));
+
+			if($userRecord===null) {
+				return $this->errorCode = self::ERROR_USERNAME_INVALID;
+			} else if($userRecord->agency_password != $this->password) {
+				return $this->errorCode = self::ERROR_PASSWORD_INVALID;
+			}
+
+			$this->_id = $userRecord->id;
+			$this->setState('userId', $userRecord->id);
 			$this->setState('username', $userRecord->agency_username);
 			$this->setState('name', $userRecord->agency_name);
 			$this->setState('userType', 2);
-		}
 
-		return $this->errorCode=self::ERROR_NONE;
+			return $this->errorCode=self::ERROR_NONE;
+		}
 	}
 
 	public function getId() {
