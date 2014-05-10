@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 10, 2014 at 04:50 AM
+-- Host: 127.0.0.1
+-- Generation Time: May 10, 2014 at 05:15 AM
 -- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- PHP Version: 5.5.11
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -117,6 +117,35 @@ CREATE TABLE IF NOT EXISTS `help_requests` (
   `alternate_location` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messagein`
+--
+
+CREATE TABLE IF NOT EXISTS `messagein` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `SendTime` datetime DEFAULT NULL,
+  `ReceiveTime` datetime DEFAULT NULL,
+  `MessageFrom` varchar(80) DEFAULT NULL,
+  `MessageTo` varchar(80) DEFAULT NULL,
+  `SMSC` varchar(80) DEFAULT NULL,
+  `MessageText` text,
+  `MessageType` varchar(20) DEFAULT NULL,
+  `MessagePDU` text,
+  `Gateway` varchar(80) DEFAULT NULL,
+  `UserId` varchar(80) DEFAULT NULL,
+  `Status` int(1) NOT NULL DEFAULT '0' COMMENT '0=unreply, 1=replied',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `messagein`
+--
+
+INSERT INTO `messagein` (`Id`, `SendTime`, `ReceiveTime`, `MessageFrom`, `MessageTo`, `SMSC`, `MessageText`, `MessageType`, `MessagePDU`, `Gateway`, `UserId`, `Status`) VALUES
+(1, '2014-05-10 00:06:28', '2014-05-10 00:06:36', '+639175056887', '+639159344468', '+639170000244', 'REG', 'sms.text', '0791361907002044040C9136195750867800004150010060822303D2E211', 'Emerge', '', 0);
 
 -- --------------------------------------------------------
 
