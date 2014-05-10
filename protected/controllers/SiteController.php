@@ -116,9 +116,9 @@ class SiteController extends Controller
 			$modelUsers->user_password = $_POST['Users']['user_password'];
 
 			if($modelUsers->validate() && $modelUsers->login()) {
-				echo 'user login success';
+				$this->redirect('user/dashboard');
 			} else {
-				echo 'user login failed';
+				$modelUsers->user_password = '';
 			}
 		}
 
@@ -129,7 +129,7 @@ class SiteController extends Controller
 			if($modelAgencies->validate() && $modelAgencies->login()) {
 				$this->redirect(array('agency/dashboard'));
 			} else {
-				echo 'agency login failed';
+				$modelAgencies->agency_password = '';
 			}
 		}
 
@@ -140,10 +140,13 @@ class SiteController extends Controller
 			$modelUsers->user_password = $_POST['Users']['user_password'];
 
 			if($modelUsers->validate() && $modelUsers->save()) {
-				echo 'user registration success';
-				$this->redirect('login');
+				$modelUsers->attributes = $_POST['Users'];
+				$modelUsers->user_password = $_POST['Users']['user_password'];
+				if($modelUsers->login()) {
+					$this->redirect(array('user/dashboard'));
+				}
 			} else {
-				echo 'user registration failed';
+				$this->redirect('login');
 			}
 		}
 
@@ -153,10 +156,13 @@ class SiteController extends Controller
 			$modelAgencies->agency_type = 1;
 
 			if($modelAgencies->validate() && $modelAgencies->save()) {
-				echo 'user registration success';
-				$this->redirect('login');
+				$modelAgencies->attributes = $_POST['Agencies'];
+				$modelAgencies->agency_password = $_POST['Agencies']['agency_password'];
+				if($modelAgencies->login()){
+					$this->redirect(array('agency/dashboard'));
+				}
 			} else {
-				echo 'user registration failed';
+				$this->redirect('login');
 			}
 		}
 
