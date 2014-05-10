@@ -42,7 +42,7 @@ class Users extends CActiveRecord
 			array('user_firstname, user_middlename, user_lastname', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, primary_username, secondary_username, user_firstname, user_middlename, user_lastname, user_mobile, user_password, user_address, user_mobile_verification_code, user_status, registration_type, user_photo', 'safe', 'on'=>'search'),
+			array('id, primary_username, secondary_username, user_firstname, user_middlename, user_lastname, user_mobile, user_password, user_address, user_address2, user_mobile_verification_code, user_status, registration_type, user_photo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,7 +71,8 @@ class Users extends CActiveRecord
 			'user_lastname' => 'User Lastname',
 			'user_mobile' => 'User Mobile',
 			'user_password' => 'User Password',
-			'user_address' => 'User Address',
+			'user_address' => 'Lat',
+			'user_address2' => 'Lng',
 			'user_mobile_verification_code' => 'User Mobile Verification Code',
 			'user_status' => 'User Status',
 			'registration_type' => 'Registration Type',
@@ -106,6 +107,7 @@ class Users extends CActiveRecord
 		$criteria->compare('user_mobile',$this->user_mobile);
 		$criteria->compare('user_password',$this->user_password,true);
 		$criteria->compare('user_address',$this->user_address,true);
+		$criteria->compare('user_address',$this->user_address2,true);
 		$criteria->compare('user_mobile_verification_code',$this->user_mobile_verification_code);
 		$criteria->compare('user_status',$this->user_status);
 		$criteria->compare('registration_type',$this->registration_type);
