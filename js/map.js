@@ -2,7 +2,7 @@
 
 function getAgencyLocationForProfile(address1,address2){
 	var mapOptions = {
-      zoom: 17
+      zoom: 18
     };
 
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
@@ -11,7 +11,6 @@ function getAgencyLocationForProfile(address1,address2){
     	navigator.geolocation.getCurrentPosition(function(position) {
 		    var pos = new google.maps.LatLng(position.coords.latitude,
 		                                     position.coords.longitude);
-		      getAddressThroughGeolocation(position.coords.latitude,position.coords.longitude);
 		      $('#location1').val(position.coords.latitude);
 			  $('#location2').val(position.coords.longitude);
 		      map.setCenter(pos);
@@ -20,10 +19,10 @@ function getAgencyLocationForProfile(address1,address2){
 		        map: map,
 		        draggable:true
 		      });
-		      console.log("current2:"+pos);
+
 		      markers.push(marker);
 		      google.maps.event.addListener(marker, 'mouseup', function(e) {
-		        placeMarker2(e.latLng, map,position.coords.latitude,position.coords.longitude);
+		        placeMarker2(e.latLng, map);
 		      });
 
 		}, function() {
@@ -31,7 +30,6 @@ function getAgencyLocationForProfile(address1,address2){
 		});
     }else{
     	pos = new google.maps.LatLng(address1,address2);
-    	getAddressThroughGeolocation(address1,address2);
     	$('#location1').val(address1);
 		$('#location2').val(address2);
     	map.setCenter(pos);
@@ -40,10 +38,10 @@ function getAgencyLocationForProfile(address1,address2){
 			map: map,
 			draggable:true
 		});
-		console.log("current2:"+pos);
+
 		markers.push(marker);
 		google.maps.event.addListener(marker, 'mouseup', function(e) {
-			placeMarker2(e.latLng, map,address1,address2);
+			placeMarker2(e.latLng, map);
 		});
     }
     google.maps.event.addListener(map, 'click', function(e) {
@@ -69,7 +67,7 @@ function getAgencyLocation(address1,address2){
 		        map: map,
 		        draggable:true
 		      });
-		      console.log("current:"+pos);
+
 		      markers.push(marker);
 		      google.maps.event.addListener(marker, 'mouseup', function(e) {
 		        placeMarker(e.latLng, map);
@@ -86,7 +84,7 @@ function getAgencyLocation(address1,address2){
 			map: map,
 			draggable:true
 		});
-		console.log("current:"+pos);
+
 		markers.push(marker);
 		google.maps.event.addListener(marker, 'mouseup', function(e) {
 		placeMarker(e.latLng, map);
@@ -108,7 +106,6 @@ function placeMarker(position, map){
 		draggable:true
 	});
 
-	console.log("current:"+position);
 	markers.push(marker);
 	google.maps.event.addListener(marker, 'mouseup', function(e) {
 	    placeMarker(e.latLng, map);
@@ -122,9 +119,11 @@ function placeMarker2(position, map,lat,lng){
 		map: map,
 		draggable:true
 	});
-	$('#location1').val(lat);
-	$('#location2').val(lng);
-	console.log("current2:"+position);
+	position = position.toString();
+	var coords = position.substr(1,position.length-2);
+	$locArr = coords.split(', ');
+	$('#location1').val($locArr[0]);
+	$('#location2').val($locArr[1]);
 	markers.push(marker);
 	google.maps.event.addListener(marker, 'mouseup', function(e) {
 	    placeMarker2(e.latLng, map,lat,lng);
@@ -148,10 +147,9 @@ function clearMarkers(){
 function getAddressThroughGeolocation(lat,lng){
 	var geocoder = new google.maps.Geocoder();
 	var latlng = new google.maps.LatLng(lat,lng);
-	
 	geocoder.geocode({'latLng': latlng}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
-			$('#location_text').text(results[1].formatted_address);
+				console.log(results);
 		} else {
 			alert('Something went wrong. Check your internet connection.');
 		}
