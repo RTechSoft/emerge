@@ -141,6 +141,7 @@ class SiteController extends Controller
 
 			if($modelUsers->validate() && $modelUsers->save()) {
 				echo 'user registration success';
+				$this->redirect('site/login');
 			} else {
 				echo 'user registration failed';
 			}
