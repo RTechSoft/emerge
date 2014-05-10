@@ -17,7 +17,7 @@
 	?>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
 </head>
-<body ng-app="emerge">
+<body ng-app="emerge" ng-controller="NotifCtrl">
 	<!-- header -->
 	<?php $this->renderPartial('//layouts/header'); ?>
 	

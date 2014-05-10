@@ -14,7 +14,7 @@
 		<div class="box-title">
 			<h4><i class="fa fa-compass"></i>Map</h4>
 		</div>
-		<div class="box-body requests-panel" ng-controller="NotifCtrl">
+		<div class="box-body requests-panel">
 			<div ng-repeat="notifications in notifs | orderByPriority | reverse" class="{{ notifications.class }} request {{ notifications.sender_number }} alert alert-block alert-danger fade in" data-id="{{ notifications.$id }}" data-option="{{ notifications.option }}">
 				<h4><i class="fa fa-user"></i> {{ notifications.name }}</h4>
 					<p>{{ notifications.sender_number }} <a href="<?php echo $this->createUrl('agency/setAssets');?>/{{notifications.$id}}" class="btn btn-xs btn-primary pull-right">Deploy Assets</a></p>
