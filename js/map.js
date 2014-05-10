@@ -1,51 +1,79 @@
-EMERGE = {};
-EMERGE.map = {
-	markers:[],
-	
-	getAgencyLocation:function(address){
-		var geocoder;
-		var map;
-		geocoder = new google.maps.Geocoder();
 
+	var map = {
+	getAgencyLocation: function(address1,address2){
 		var mapOptions = {
-			zoom : 17,
-			mapTypeId : google.maps.MapTypeId.ROADMAP
-		}
+	      zoom: 17
+	    };
 
-		map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+	    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
-		geocoder.geocode( {'address':address}, function(results, status){
-			if(status == google.maps.GeocoderStatus.OK){
-				map.setCenter(results[0].geometry.location);
-				var marker = new google.maps.Marker({
-					map : map,
-					position : results[0].geometry.location,
-					icon : 'http://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Marker-Outside-Pink-icon.png',
-				});
+	    if(address1 == "" || address2 == ""){
+	    	navigator.geolocation.getCurrentPosition(function(position) {
+			    var pos = new google.maps.LatLng(position.coords.latitude,
+			                                     position.coords.longitude);
 
-				marker.setAnimation(google.maps.Animation.DROP);
-			}else{
-				
-				    handleNoGeolocation(false);
-				
-			}
+			      map.setCenter(pos);
+			      var marker = new google.maps.Marker({
+			        position: pos,
+			        map: map,
+			        draggable:true
+			      });
+			      console.log("current:"+pos);
+			      markers.push(marker);
+			      google.maps.event.addListener(marker, 'mouseup', function(e) {
+			        placeMarker(e.latLng, map);
+			      });
+
+			}, function() {
+			    alert('something went wrong');
+			});
+	    }else{
+	    	pos = new google.maps.LatLng(address1,address2);
+	    	map.setCenter(pos);
+			var marker = new google.maps.Marker({
+				position: pos,
+				map: map,
+				draggable:true
+			});
+			console.log("current:"+pos);
+			markers.push(marker);
+			google.maps.event.addListener(marker, 'mouseup', function(e) {
+			placeMarker(e.latLng, map);
+			});
+	    }
+	    
+	    google.maps.event.addListener(map, 'click', function(e) {
+		    placeMarker(e.latLng, map);
+		  });
+	},
+	placeMarker: function(position, map){
+		deleteMarkers();
+		map.panTo(position);
+		var marker = new google.maps.Marker({
+			position: position,
+			map: map,
+			draggable:true
 		});
 
+		console.log("current:"+position);
+		markers.push(marker);
+		google.maps.event.addListener(marker, 'mouseup', function(e) {
+		    placeMarker(e.latLng, map);
+		  });
 	},
-	handleNoGeolocation:function(errorFlag){
-	  if (errorFlag) {
-	    var content = 'Error: The Geolocation service failed.';
-	  } else {
-	    var content = 'Error: Your browser doesn\'t support geolocation.';
-	  }
-
-	  var options = {
-	    map: map,
-	    position: new google.maps.LatLng(60, 105),
-	    content: content
-	  };
-
-	  var infowindow = new google.maps.InfoWindow(options);
-	  map.setCenter(options.position);
+	setAllMap: function(map){
+		for (var i = 0; i < markers.length; i++) {
+			markers[i].setMap(map);
+		}
 	},
+
+	deleteMarkers: function(){
+		clearMarkers();
+		markers = [];
+	},
+
+	clearMarkers: function(){
+		setAllMap(null);
+	},
+	
 };
