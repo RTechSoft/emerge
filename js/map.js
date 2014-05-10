@@ -13,6 +13,7 @@ function getAgencyLocationForProfile(address1,address2){
 		                                     position.coords.longitude);
 		      $('#location1').val(position.coords.latitude);
 			  $('#location2').val(position.coords.longitude);
+			  getAddressThroughGeolocation(position.coords.latitude,position.coords.longitude);
 		      map.setCenter(pos);
 		      var marker = new google.maps.Marker({
 		        position: pos,
@@ -32,6 +33,7 @@ function getAgencyLocationForProfile(address1,address2){
     	pos = new google.maps.LatLng(address1,address2);
     	$('#location1').val(address1);
 		$('#location2').val(address2);
+		getAddressThroughGeolocation(address1,address2);
     	map.setCenter(pos);
 		var marker = new google.maps.Marker({
 			position: pos,
@@ -124,6 +126,7 @@ function placeMarker2(position, map,lat,lng){
 	$locArr = coords.split(', ');
 	$('#location1').val($locArr[0]);
 	$('#location2').val($locArr[1]);
+	getAddressThroughGeolocation($locArr[0],$locArr[1]);
 	markers.push(marker);
 	google.maps.event.addListener(marker, 'mouseup', function(e) {
 	    placeMarker2(e.latLng, map,lat,lng);
@@ -149,7 +152,7 @@ function getAddressThroughGeolocation(lat,lng){
 	var latlng = new google.maps.LatLng(lat,lng);
 	geocoder.geocode({'latLng': latlng}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
-				console.log(results);
+				$('#location_text').val(results[0].formatted_address);
 		} else {
 			alert('Something went wrong. Check your internet connection.');
 		}
