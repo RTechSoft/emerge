@@ -10,7 +10,7 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<div class="box border">
+		<div class="box border primary">
 			<div class="box-title">
 				<h4><i class="fa fa-user"></i></h4>
 			</div>
@@ -21,8 +21,8 @@
 					</ul>
 					<div class="tab-content">
 					   <div class="tab-pane fade in active" id="pro_overview">
-					   <div class="row">
-					   			<form role="form" name="agency_update_form" method="POST" action="<?php echo $this->createUrl('agency/update',array('id'=>Yii::app()->user->id)); ?>">
+					   		<form role="form" name="agency_update_form" method="POST" action="<?php echo $this->createUrl('agency/update',array('id'=>Yii::app()->user->id)); ?>">
+					   			<div class="row">
 									<div class="col-md-6">
 										<div class="box border primary">
 											<div class="box-title">
@@ -58,8 +58,8 @@
 												<label for="agency_username">Password</label>
 												<input type="password" class="form-control" name="agency_password" id="agency_password" placeholder="Leave blank if will not be edited">
 											  </div>
-											  <input type="submit" value="Update">
 											</div>
+
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -72,8 +72,11 @@
 											</div>
 										</div>
 									</div>
-								</form>
+								</div>
+							<div class="toolbox bottom">
+								<button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-cog"></i> Update</button>
 							</div>
+							</form>
 					   </div>
 					   <div class="tab-pane fade" id="pro_edit">
 					   		
