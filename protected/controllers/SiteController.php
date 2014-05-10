@@ -147,6 +147,19 @@ class SiteController extends Controller
 			}
 		}
 
+		if(isset($_POST['Agencies']) && isset($_POST['btnRegisterAgency'])) {
+			$modelAgencies->attributes = $_POST['Agencies'];
+			$modelAgencies->agency_password = $_POST['Agencies']['agency_password'];
+			$modelAgencies->agency_type = 1;
+
+			if($modelAgencies->validate() && $modelAgencies->save()) {
+				echo 'user registration success';
+				$this->redirect('site/login');
+			} else {
+				echo 'user registration failed';
+			}
+		}
+
 		$this->render('login', array('modelUsers'=>$modelUsers, 'modelAgencies'=>$modelAgencies));
 	}
 

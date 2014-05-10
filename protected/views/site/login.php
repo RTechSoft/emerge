@@ -48,7 +48,8 @@
 					<div class="login-helpers">
 						<a href="#" onclick="swapScreen('agencylogin_bg');return false;" style="color:white; text-decoration:underline;">Agency login</a> <br>
 						Don't have an account with us? <a href="#" onclick="swapScreen('register_bg');return false;" style="color:white; text-decoration:underline;">Register
-							now!</a>
+							now!</a> <br>
+						<a href="#" onclick="swapScreen('forgot_bg');return false;" style="color:white; text-decoration:underline;">Register Agency</a>
 					</div>
 				</div>
 			</div>
@@ -98,7 +99,7 @@
 </section>
 
 <!-- user registration -->
-<div id="register_bg">
+<section id="register_bg">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
@@ -157,7 +158,53 @@
 			</div>
 		</div>
 	</div>
-</div>
+</section>
+
+<section id="forgot_bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="login-box">
+					<h2 class="bigintro">Agency Registration</h2>
+					<div class="divide-40"></div>
+					<?php $form=$this->beginwidget('CActiveForm', array(
+						'id'=>'agencyregistration-form',
+						'enableClientValidation'=>true,
+						'clientOptions'=>array(
+							'validateOnSubmit'=>true
+						),
+						'htmlOptions'=>array(
+							'role'=>'form'
+						)
+					)); ?>
+						<div class="form-group">
+							<label>Username</label>
+							<i class="fa fa-user"></i>
+							<?php echo $form->textField($modelAgencies, 'agency_username', array('class'=>'form-control')); ?>
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<i class="fa fa-lock"></i>
+							<?php echo $form->passwordField($modelAgencies, 'agency_password', array('class'=>'form-control')); ?>
+						</div>
+						<div class="form-group">
+							<label>Agency Name</label>
+							<i class="fa fa-user"></i>
+							<?php echo $form->textField($modelAgencies, 'agency_name', array('class'=>'form-control')); ?>
+						</div>
+						<div>
+							<button type="submit" class="btn btn-danger" name="btnRegisterAgency">Register</button>
+						</div>
+					<?php $this->endWidget(); ?>
+					<div class="divide-20"></div>
+					<div class="login-helpers">
+						Already have an account? Login <a href="#" onclick="swapScreen('userlogin_bg');return false;" style="color:white; text-decoration:underline;">here</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 <script>
 	jQuery(document).ready(function() {
