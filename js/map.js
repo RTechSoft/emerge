@@ -1,3 +1,5 @@
+//mapping
+
 function getAgencyLocationForProfile(address1,address2){
 	var mapOptions = {
       zoom: 17
@@ -9,17 +11,19 @@ function getAgencyLocationForProfile(address1,address2){
     	navigator.geolocation.getCurrentPosition(function(position) {
 		    var pos = new google.maps.LatLng(position.coords.latitude,
 		                                     position.coords.longitude);
-
+		      getAddressThroughGeolocation(position.coords.latitude,position.coords.longitude);
+		      $('#location1').val(position.coords.latitude);
+			  $('#location2').val(position.coords.longitude);
 		      map.setCenter(pos);
 		      var marker = new google.maps.Marker({
 		        position: pos,
 		        map: map,
 		        draggable:true
 		      });
-		      console.log("current:"+pos);
+		      console.log("current2:"+pos);
 		      markers.push(marker);
 		      google.maps.event.addListener(marker, 'mouseup', function(e) {
-		        placeMarker2(e.latLng, map);
+		        placeMarker2(e.latLng, map,position.coords.latitude,position.coords.longitude);
 		      });
 
 		}, function() {
@@ -27,16 +31,19 @@ function getAgencyLocationForProfile(address1,address2){
 		});
     }else{
     	pos = new google.maps.LatLng(address1,address2);
+    	getAddressThroughGeolocation(address1,address2);
+    	$('#location1').val(address1);
+		$('#location2').val(address2);
     	map.setCenter(pos);
 		var marker = new google.maps.Marker({
 			position: pos,
 			map: map,
 			draggable:true
 		});
-		console.log("current:"+pos);
+		console.log("current2:"+pos);
 		markers.push(marker);
 		google.maps.event.addListener(marker, 'mouseup', function(e) {
-			placeMarker2(e.latLng, map);
+			placeMarker2(e.latLng, map,address1,address2);
 		});
     }
     google.maps.event.addListener(map, 'click', function(e) {
@@ -44,6 +51,7 @@ function getAgencyLocationForProfile(address1,address2){
 	  });
 }
 
+//mapping
 function getAgencyLocation(address1,address2){
 	var mapOptions = {
       zoom: 17
@@ -55,7 +63,6 @@ function getAgencyLocation(address1,address2){
     	navigator.geolocation.getCurrentPosition(function(position) {
 		    var pos = new google.maps.LatLng(position.coords.latitude,
 		                                     position.coords.longitude);
-
 		      map.setCenter(pos);
 		      var marker = new google.maps.Marker({
 		        position: pos,
@@ -69,7 +76,7 @@ function getAgencyLocation(address1,address2){
 		      });
 
 		}, function() {
-		    alert('something went wrong');
+		    alert('Something went wrong. Check your internet connection.');
 		});
     }else{
     	pos = new google.maps.LatLng(address1,address2);
@@ -90,6 +97,8 @@ function getAgencyLocation(address1,address2){
 	    placeMarker(e.latLng, map);
 	  });
 }
+
+//modifiers
 function placeMarker(position, map){
 	deleteMarkers();
 	map.panTo(position);
@@ -105,7 +114,7 @@ function placeMarker(position, map){
 	    placeMarker(e.latLng, map);
 	  });
 }
-function placeMarker2(position, map){
+function placeMarker2(position, map,lat,lng){
 	deleteMarkers();
 	map.panTo(position);
 	var marker = new google.maps.Marker({
@@ -113,11 +122,12 @@ function placeMarker2(position, map){
 		map: map,
 		draggable:true
 	});
-
-	console.log("current:"+position);
+	$('#location1').val(lat);
+	$('#location2').val(lng);
+	console.log("current2:"+position);
 	markers.push(marker);
 	google.maps.event.addListener(marker, 'mouseup', function(e) {
-	    placeMarker(e.latLng, map);
+	    placeMarker2(e.latLng, map,lat,lng);
 	  });
 }
 function setAllMap(map){
@@ -133,5 +143,18 @@ function deleteMarkers(){
 
 function clearMarkers(){
 	setAllMap(null);
+}
+
+function getAddressThroughGeolocation(lat,lng){
+	var geocoder = new google.maps.Geocoder();
+	var latlng = new google.maps.LatLng(lat,lng);
+	
+	geocoder.geocode({'latLng': latlng}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			$('#location_text').text(results[1].formatted_address);
+		} else {
+			alert('Something went wrong. Check your internet connection.');
+		}
+	});
 }
 	
