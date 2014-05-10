@@ -1,4 +1,4 @@
-<div id="sidebar" class="sidebar">
+<div id="sidebar" class="sidebar" ng-controller="NotifCtrl">
 	<div class="sidebar-menu nav-collapse">
 		<div class="divide-20"></div>
 		<div id="search-bar">
