@@ -18,11 +18,19 @@
 				</tr>
 			</thead>
 			<tbody>
+				<?php if($model){ ?>
+					<?php foreach($model as $key=>$value){ ?>
+					<tr>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+					<?php } ?>
+				<?php } else { ?>
 				<tr>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
+					<td colspan="3">No data</td>
 				</tr>
+				<?php } ?>
 			</tbody>
 		</table>
 	</div>

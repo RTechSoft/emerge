@@ -137,10 +137,24 @@ class SiteController extends Controller
 			$modelUsers->attributes = $_POST['Users'];
 			$modelUsers->user_mobile = $_POST['Users']['primary_username'];
 			$modelUsers->registration_type = 1;
-			$modelUsers->user_password = $_POST['Users']['password'];
+			$modelUsers->user_password = $_POST['Users']['user_password'];
 
 			if($modelUsers->validate() && $modelUsers->save()) {
 				$this->redirect(array('user/dashboard'));
+				$this->redirect('login');
+			} else {
+				echo 'user registration failed';
+			}
+		}
+
+		if(isset($_POST['Agencies']) && isset($_POST['btnRegisterAgency'])) {
+			$modelAgencies->attributes = $_POST['Agencies'];
+			$modelAgencies->agency_password = $_POST['Agencies']['agency_password'];
+			$modelAgencies->agency_type = 1;
+
+			if($modelAgencies->validate() && $modelAgencies->save()) {
+				echo 'user registration success';
+				$this->redirect('login');
 			} else {
 				$this->redirect(array('site/login'));
 				//echo 'user registration failed';

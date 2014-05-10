@@ -9,7 +9,7 @@
 	</div>
 </div>
 <div class="row">
-	<div id="map_canvas" style="margin-left:5px;margin-top:-10px;min-height:800px;" class="col-md-9"></div>
+	<div id="map_canvas" style="margin-left:5px;margin-top:-10px;height:700px;" class="col-md-9"></div>
 	<div id="directions-panel" style="width:400px;" class="col-md-3"></div>
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>

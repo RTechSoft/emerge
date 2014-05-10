@@ -23,7 +23,11 @@
 	
 	<!-- main content -->
 	<section id="page">
-		<?php $this->renderPartial('//layouts/sidebar'); ?>
+		<?php
+		if(Yii::app()->user->userType==2){
+			$this->renderPartial('//layouts/sidebar');
+		}
+		?>
 		<div id="main-content">
 			<div class="container">
 				<div class="row">

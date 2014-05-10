@@ -3,24 +3,18 @@
 		<div class="navbar-brand">
 			<!-- logo -->
 			<a href="#">
-				<img src="<?php echo Yii::app()->theme->baseUrl.'/library/img/logo/logo.png'; ?>" class="img-responsive" height="30" width="120">
-			</a>
-			<!-- team status for mobile -->
-			<div class="visible-xs">
-				<a href="#" class="team-status-toggle switcher btn dropdown-toggle">
-					<i class="fa fa-users"></i>
-				</a>
-			</div>
+				<img src="<?php echo Yii::app()->request->baseUrl.'/images/logo.png'; ?>" class="img-responsive" height="30" width="120">
+			</a
 			<!-- sidebar collapse -->
-			<div id="sidebar-collapse" class="sidebar-collapse btn">
-				<i class="fa fa-bars" 
-					data-icon1="fa fa-bars" 
-					data-icon2="fa fa-bars" ></i>
+			<div id="sidebar-collapse" class="sidebar-collapse btn visible-xs">
+				<i class="fa fa-users" 
+					data-icon1="fa fa-users" 
+					data-icon2="fa fa-users" ></i>
 			</div>
 		</div>
 	
 		<!-- navbar left -->
-		<ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
+		<ul class="nav navbar-nav pull-left">
 			<?php if(Yii::app()->user->userType == 1) { ?>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle tip-bottom" title="Test">
@@ -38,22 +32,22 @@
 				</li>
 			<?php } else if(Yii::app()->user->userType == 2) { ?>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle tip-bottom" title="Test">
+					<a href="#" class="dropdown-toggle tip-bottom" title="Dashboard">
 						<span class="name">Dashboard</span>
 					</a>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle tip-bottom" title="Test">
+					<a href="#" class="dropdown-toggle tip-bottom" title="Assets">
 						<span class="name">Assets</span>
 					</a>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle tip-bottom" title="Test">
+					<a href="#" class="dropdown-toggle tip-bottom" title="Help Logs">
 						<span class="name">Help Logs</span>
 					</a>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Team View">
+					<a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Tracker">
 						<span class="name">Track</span>
 						<i class="fa fa-angle-down"></i>
 					</a>

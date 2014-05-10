@@ -10,7 +10,7 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<div class="box border">
+		<div class="box border primary">
 			<div class="box-title">
 				<h4><i class="fa fa-user"></i></h4>
 			</div>
@@ -21,12 +21,12 @@
 					</ul>
 					<div class="tab-content">
 					   <div class="tab-pane fade in active" id="pro_overview">
-					   <div class="row">
-					   			<form role="form" name="agency_update_form" method="POST" action="<?php echo $this->createUrl('agency/update',array('id'=>Yii::app()->user->id)); ?>">
-									<div class="col-md-4">
-										<div class="box border">
+					   		<form role="form" name="agency_update_form" method="POST" action="<?php echo $this->createUrl('agency/update',array('id'=>Yii::app()->user->id)); ?>">
+					   			<div class="row">
+									<div class="col-md-6">
+										<div class="box border primary">
 											<div class="box-title">
-												<h4><i class="fa fa-bars"></i>Agency Information</h4>
+												<h4><i class="fa fa-building-o"></i>Agency Information</h4>
 											</div>
 											<div class="box-body big">
 											  <h4>Basic Information</h4>
@@ -43,11 +43,11 @@
 													  <?php } ?>
 												</select>
 											  </div>
-											  <input type="text" readonly id="location1" name="location1" value="<?php $agency->agency_location; ?>">
-											  <input type="text" readonly id="location2" name="location2" value="<?php $agency->agency_location2; ?>">
+											  <input type="hidden" readonly id="location1" name="location1" value="<?php $agency->agency_location; ?>">
+											  <input type="hidden" readonly id="location2" name="location2" value="<?php $agency->agency_location2; ?>">
 											  <div class="form-group">
-												<label for="location_text">Location</label>
-												<input type="text" class="form-control" id="location_text" readonly value="Use the pin on the map to change location">
+												<label for="location_text">Location (Move pin or click on map to change location)</label>
+												<input type="text" class="form-control" id="location_text" readonly>
 											  </div>
 											  <h4>Login credentials</h4>
 											  <div class="form-group">
@@ -58,13 +58,25 @@
 												<label for="agency_username">Password</label>
 												<input type="password" class="form-control" name="agency_password" id="agency_password" placeholder="Leave blank if will not be edited">
 											  </div>
-											  <input type="submit" value="Update">
+											</div>
+
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="box border primary">
+											<div class="box-title">
+												<h4><i class="fa fa-compass"></i>Map</h4>
+											</div>
+											<div class="box-body">
+												<div id="map_canvas" class="gmaps" style="position:relative"></div>
 											</div>
 										</div>
 									</div>
-									<div id="map_canvas" style="margin:auto;min-height:600px;" class="col-md-7"></div>
-								</form>
+								</div>
+							<div class="toolbox bottom">
+								<button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-cog"></i> Update</button>
 							</div>
+							</form>
 					   </div>
 					   <div class="tab-pane fade" id="pro_edit">
 					   		
