@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-md-12">
 					<h2 class="text-center">
-					<span class="bigintro">About Us</span>
+					<span class="bigintro">E M E R G E</span>
 					</h2>
 			</div>
 		</div>
