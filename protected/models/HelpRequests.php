@@ -29,11 +29,11 @@ class HelpRequests extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('sender_number, sender_location, location_scope, status', 'required'),
+			array('sender_number, status', 'required'),
 			array('sender_number, status', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, sender_number, sender_location, alt_location, location_scope, sender_location2, status', 'safe', 'on'=>'search'),
+			array('id, sender_number, sender_location, alternate_location, location_scope, sender_location2, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,9 +57,9 @@ class HelpRequests extends CActiveRecord
 			'id' => 'ID',
 			'sender_number' => 'Sender Number',
 			'sender_location' => 'Sender Location',
-			'sender_location2' => 'Sender Location2'
+			'sender_location2' => 'Sender Location2',
 			'location_scope' => 'Location Scope',
-			'alt_location' => 'Alternate Location',
+			'alternate_location' => 'Alternate Location',
 			'status' => 'Status',
 		);
 	}
@@ -87,7 +87,7 @@ class HelpRequests extends CActiveRecord
 		$criteria->compare('sender_location',$this->sender_location,true);
 		$criteria->compare('sender_location2',$this->sender_location2,true);
 		$criteria->compare('location_scope',$this->location_scope,true);
-		$criteria->compare('alt_location',$this->alt_location,true);
+		$criteria->compare('alternate_location',$this->alternate_location,true);
 		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(

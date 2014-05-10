@@ -167,4 +167,17 @@ class Users extends CActiveRecord
 			return false;
 		}
 	}
+
+	public static function editUser($data){
+		$edit = self::model()->findByPk($data['id']);
+		$edit->user_firstname = $data['fname'];
+		$edit->user_middlename = $data['mname'];
+		$edit->user_lastname = $data['lname'];
+		$edit->primary_username = $data['primary'];
+		$edit->secondary_username = $data['secondary'];
+		if($data['pword']){
+			$edit->user_password = $data['pword'];
+		}
+		$edit->save();
+	}
 }

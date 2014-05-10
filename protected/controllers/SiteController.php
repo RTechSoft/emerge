@@ -116,9 +116,9 @@ class SiteController extends Controller
 			$modelUsers->user_password = $_POST['Users']['user_password'];
 
 			if($modelUsers->validate() && $modelUsers->login()) {
-				echo 'user login success';
+				$this->redirect(array('user/dashboard'));
 			} else {
-				echo 'user login failed';
+				$this->redirect(array('site/login'));
 			}
 		}
 
@@ -140,9 +140,10 @@ class SiteController extends Controller
 			$modelUsers->user_password = $_POST['Users']['password'];
 
 			if($modelUsers->validate() && $modelUsers->save()) {
-				echo 'user registration success';
+				$this->redirect(array('user/dashboard'));
 			} else {
-				echo 'user registration failed';
+				$this->redirect(array('site/login'));
+				//echo 'user registration failed';
 			}
 		}
 
