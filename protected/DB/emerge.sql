@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 10, 2014 at 05:15 AM
+-- Host: localhost
+-- Generation Time: May 10, 2014 at 07:53 AM
 -- Server version: 5.5.16
--- PHP Version: 5.5.11
+-- PHP Version: 5.3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -111,10 +111,10 @@ CREATE TABLE IF NOT EXISTS `help_requests` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sender_number` int(11) NOT NULL,
   `sender_location` text NOT NULL,
-  `respondents` text NOT NULL,
   `location_scope` text NOT NULL,
   `status` int(11) NOT NULL,
   `alternate_location` text NOT NULL,
+  `sender_location2` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_firstname` varchar(100) NOT NULL,
   `user_middlename` varchar(100) NOT NULL,
   `user_lastname` varchar(100) NOT NULL,
-  `user_mobile` int(11) NOT NULL,
+  `user_mobile` varchar(100) NOT NULL,
   `user_password` text NOT NULL,
   `user_address` text NOT NULL,
   `user_mobile_verification_code` int(11) NOT NULL,
@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `primary_username`, `secondary_username`, `user_firstname`, `user_middlename`, `user_lastname`, `user_mobile`, `user_password`, `user_address`, `user_mobile_verification_code`, `user_status`, `registration_type`, `user_photo`, `user_address2`) VALUES
-(2, '09466886843', 'rienier31', 'Rienier', 'Santos', 'Patron', 0, 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e', '', 0, 0, 0, '0', '');
+(2, '09466886843', 'rienier31', 'Rienier', 'Santos', 'Patron', '0', 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e', '', 0, 0, 0, '0', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

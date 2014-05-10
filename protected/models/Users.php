@@ -39,7 +39,7 @@ class Users extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			// array('primary_username, secondary_username, user_firstname, user_middlename, user_lastname, user_mobile, user_password, user_address, user_mobile_verification_code, user_status, registration_type, user_photo', 'required'),
-			array('user_mobile, user_mobile_verification_code, user_status, registration_type', 'numerical', 'integerOnly'=>true),
+			array('user_mobile_verification_code, user_status, registration_type', 'numerical', 'integerOnly'=>true),
 			array('primary_username, secondary_username', 'length', 'max'=>255),
 			array('user_firstname, user_middlename, user_lastname', 'length', 'max'=>100),
 			// The following rule is used by search().
@@ -106,7 +106,7 @@ class Users extends CActiveRecord
 		$criteria->compare('user_firstname',$this->user_firstname,true);
 		$criteria->compare('user_middlename',$this->user_middlename,true);
 		$criteria->compare('user_lastname',$this->user_lastname,true);
-		$criteria->compare('user_mobile',$this->user_mobile);
+		$criteria->compare('user_mobile',$this->user_mobile,true);
 		$criteria->compare('user_password',$this->user_password,true);
 		$criteria->compare('user_address',$this->user_address,true);
 		$criteria->compare('user_address',$this->user_address2,true);
