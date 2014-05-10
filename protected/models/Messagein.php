@@ -157,8 +157,15 @@ class Messagein extends CActiveRecord
 		$mobileSignUp = new Users();
 		$mobileSignUp->primary_username = $value['number'];
 		$mobileSignUp->user_password = "1234";
-		$mobileSignUp->user_firstname = $value['fname'];
-		$mobileSignUp->user_lastname = $value['lname'];
+		if($value['username']){
+			$mobileSignUp->secondary_username = $value['username'];
+		}
+		if($value['fname']){
+			$mobileSignUp->user_firstname = $value['fname'];
+		}
+		if($value['lname']){
+			$mobileSignUp->user_lastname = $value['lname'];
+		}
 		$mobileSignUp->registration_type = 2;
 		$mobileSignUp->user_mobile = $value['number'];
 		$mobileSignUp->save();
@@ -169,9 +176,12 @@ class Messagein extends CActiveRecord
 	//helprequest.php
 	public static function addHelpRequest($value){
 		$help = new HelpRequests();
-
-		$help->sender_number = $value['number'];
-		$help->location_scope = $value['location_scope'];
+		if($value['number']){
+			$help->sender_number = $value['number'];
+		}
+		if($value['location_scope']){
+			$help->location_scope = $value['location_scope'];
+		}
 
 		if($value['sender_location'] && $value['sender_location2']){
 			$help->sender_location = $value['sender_location'] . ',' . $value['sender_location2'];
