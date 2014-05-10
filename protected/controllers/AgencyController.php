@@ -34,4 +34,8 @@ class AgencyController extends Controller
 		$model->save();
 		$this->redirect(array('agency/profile'));
 	}
+
+	public function actionAssets(){
+		$assetsInfo = AssetManager::model()->findAllByAttributes(array('agency_id'=>Yii::app()->user->id));
+	}
 }
