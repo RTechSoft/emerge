@@ -171,20 +171,19 @@ class Messagein extends CActiveRecord
 		$help = new HelpRequests();
 
 		$help->sender_number = $value['number'];
-		$firebase->set('sender_number', $help->sender_number);
-
 		$help->location_scope = $value['location_scope'];
-		if($value['sender_location']){
-			$help->sender_location = $value['sender_location'];
+
+		if($value['sender_location'] && $value['sender_location2']){
+			$help->sender_location = $value['sender_location'] . ',' . $value['sender_location2'];
 		}
-		if($value['alt_location']){
-			$help->alt_location = $value['alt_location'];
+		if($value['alternate_location']){
+			$help->alternate_location = $value['alternate_location'];
 		}
 		$help->status = 0;
 		if($help->save()){
 			$firebase = new Firebase('https://emerge.firebaseio.com/', '3lyQRefcRqTwtRVvkwHwYK8VxXpyJ0KiBe1RaK5b');
 
-			$user = Users::model()->findByAttributes(array('sender_number'=>$help->sender_number));
+			$user = Users::model()->findByAttributes(array('user_mobile'=>$help->sender_number));
 			
 			if($user) {
 				$firebase->set('requests/'.$help->id.'/name', $user->user_firstname . ' ' . $user->user_lastname);
@@ -197,10 +196,18 @@ class Messagein extends CActiveRecord
 
 			if($help->sender_location) {
 				$firebase->set('requests/'.$help->id.'/sender_location', $help->sender_location);
+				$firebase->set('requests/'.$help->id.'/class', 'coordinate');
+				$firebase->set('requests/'.$help->id.'/option', $help->sender_location);
+			} else {
+				$firebase->set('requests/'.$help->id.'/sender_location', "null");
 			}
 
-			if($help->alt_location) {
-				$firebase->set('requests/'.$help->id.'/alt_location', $help->alt_location);
+			if($help->alternate_location) {
+				$firebase->set('requests/'.$help->id.'/class', 'address');
+				$firebase->set('requests/'.$help->id.'/alt_location', $help->alternate_location);
+				$firebase->set('requests/'.$help->id.'/option', $help->alternate_location);
+			} else {
+				$firebase->set('requests/'.$help->id.'/alt_location', $help->alternate_location);
 			}
 		}
 

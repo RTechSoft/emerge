@@ -3,6 +3,9 @@ var EMERGE = {};
 EMERGE.common = {
 	init: function() {
 		commonClass = this;
+		$('.sidebar-menu').slimScroll({
+			height: '500px'
+		});
 	},
 
 	notify: function() {
@@ -37,17 +40,20 @@ EMERGE.common = {
 
 			dataRef.on('child_added', function (snapshot) {
 				if (!newNotifs) return;
-				console.log(snapshot.val());
+				$.gritter.add({
+					title: snapshot.val().name + ' is asking for help',
+				});
 			});
 
 			dataRef.once('value', function (snapshot) {
 				newNotifs = true;
 			});
 
-			fb.$on('loaded', function (snapshot) {
-				console.log(snapshot);
-				$scope.notifs = snapshot;
-			});
+			// fb.$on('loaded', function (snapshot) {
+			// 	console.log(snapshot);
+			// 	$scope.notifs = snapshot;
+			// });
+			$scope.notifs = fb;
 		});
 	}
 }
