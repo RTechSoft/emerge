@@ -28,10 +28,10 @@ class HelpLogs extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('request_id, agency_id, response_date', 'required'),
-			array('request_id, agency_id', 'numerical', 'integerOnly'=>true),
+			array('request_id, agency_id, status', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, request_id, agency_id, response_date', 'safe', 'on'=>'search'),
+			array('id, request_id, agency_id, response_date, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,6 +56,7 @@ class HelpLogs extends CActiveRecord
 			'request_id' => 'Request',
 			'agency_id' => 'Agency',
 			'response_date' => 'Response Date',
+			'status' => 'Status',
 		);
 	}
 
@@ -81,6 +82,7 @@ class HelpLogs extends CActiveRecord
 		$criteria->compare('request_id',$this->request_id);
 		$criteria->compare('agency_id',$this->agency_id);
 		$criteria->compare('response_date',$this->response_date,true);
+		criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
