@@ -115,9 +115,9 @@ class SiteController extends Controller
 			$modelUsers->attributes = $_POST['Users'];
 
 			if($modelUsers->validate() && $modelUsers->login()) {
-				echo 'user login success';
+				$this->redirect(array('user/dashboard'));
 			} else {
-				echo 'user login failed';
+				$this->redirect(array('site/login'));
 			}
 		}
 
@@ -137,9 +137,10 @@ class SiteController extends Controller
 			$modelUsers->registration_type = 1;
 
 			if($modelUsers->validate() && $modelUsers->save()) {
-				echo 'user registration success';
+				$this->redirect(array('user/dashboard'));
 			} else {
-				echo 'user registration failed';
+				$this->redirect(array('site/login'));
+				//echo 'user registration failed';
 			}
 		}
 
