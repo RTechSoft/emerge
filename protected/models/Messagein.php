@@ -188,6 +188,8 @@ class Messagein extends CActiveRecord
 			
 			if($user) {
 				$firebase->set('requests/'.$help->id.'/name', $user->user_firstname . ' ' . $user->user_lastname);
+			} else {
+				$firebase->set('requests/'.$help->id.'/name', "Anonymous");
 			}
 
 			$firebase->set('requests/'.$help->id.'/sender_number',  $help->sender_number);
