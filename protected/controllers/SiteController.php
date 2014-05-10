@@ -116,7 +116,7 @@ class SiteController extends Controller
 			$modelUsers->user_password = $_POST['Users']['user_password'];
 
 			if($modelUsers->validate() && $modelUsers->login()) {
-				$this->redirect('user/dashboard');
+				$this->redirect(array('user/dashboard'));
 			} else {
 				$modelUsers->user_password = '';
 			}
@@ -147,6 +147,8 @@ class SiteController extends Controller
 				}
 			} else {
 				$this->redirect('login');
+			} else {
+				echo 'user registration failed';
 			}
 		}
 

@@ -22,11 +22,11 @@ class SmsCommand extends CConsoleCommand{
 			}else if(strpos($val['MessageText'],'HELP') !== false){
 				if(count($chunks)==1){
 					if($checkNumberIfExist){
-						if($checkNumberExist['user_address']){
-							$arrayHolder['number'] = $checkNumberExist['number'];
-							$arrayHolder['sender_location'] = $checkNumberExist['user_address'];
-							$arrayHolder['alt_location'] = "";
-							$arrayHolder['location_scope'] = "";
+						if($checkNumberIfExist['user_address'] && $checkNumberIfExist['user_address2']){
+							$arrayHolder['number'] = $checkNumberIfExist['primary_username'];
+							$arrayHolder['sender_location'] = $checkNumberIfExist['user_address'];
+							$arrayHolder['sender_location2'] = $checkNumberIfExist['user_address2'];
+							$arrayHolder['alternate_location'] = "";
 							Messagein::addHelpRequest($arrayHolder);
 							echo "Help request sent.";
 							// Messagein::sendSms("Help%20request%20sent.",$num);
@@ -43,9 +43,13 @@ class SmsCommand extends CConsoleCommand{
 				}
 				else{
 					if($checkNumberIfExist){
-						$arrayHolder['number'] = $checkNumberExist['number'];
-						$arrayHolder['alt_location'] = $chunk[1];
-						$arrayHolder['location_scope'] = "";
+						$add = "";
+						$arrayHolder['number'] = $checkNumberIfExist['primary_username'];
+						for($i=1; $i<count($chunks); $i++){
+							$add=$add." ".$chunks[$i];
+						}
+
+						$arrayHolder['alternate_location'] = ltrim($add, ' ');
 						Messagein::addHelpRequest($arrayHolder);
 						echo "Help request sent.";
 						// Messagein::sendSms("Help%20request%20sent.",$num);
