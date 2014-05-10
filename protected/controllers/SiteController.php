@@ -113,6 +113,7 @@ class SiteController extends Controller
 
 		if(isset($_POST['Users']) && isset($_POST['btnLoginUser'])) {
 			$modelUsers->attributes = $_POST['Users'];
+			$modelUsers->user_password = $_POST['Users']['user_password'];
 
 			if($modelUsers->validate() && $modelUsers->login()) {
 				echo 'user login success';
@@ -123,6 +124,7 @@ class SiteController extends Controller
 
 		if(isset($_POST['Agencies']) && isset($_POST['btnLoginAgency'])) {
 			$modelAgencies->attributes = $_POST['Agencies'];
+			$modelAgencies->agency_password = $_POST['Agencies']['agency_password'];
 
 			if($modelAgencies->validate() && $modelAgencies->login()) {
 				$this->redirect(array('agency/dashboard'));
@@ -135,6 +137,7 @@ class SiteController extends Controller
 			$modelUsers->attributes = $_POST['Users'];
 			$modelUsers->user_mobile = $_POST['Users']['primary_username'];
 			$modelUsers->registration_type = 1;
+			$modelUsers->user_password = $_POST['Users']['password'];
 
 			if($modelUsers->validate() && $modelUsers->save()) {
 				echo 'user registration success';
