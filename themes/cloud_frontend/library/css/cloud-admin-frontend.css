@@ -42,7 +42,7 @@ html {
 }
 body {
   margin: 0;
-  background-color: #f6f6f6;
+  background-color: #f6f6f6 !important;
 }
 a {
   background: transparent;
@@ -6109,7 +6109,7 @@ ul.list-inline {
 #header {
   /* Image credit: http://farm6.staticflickr.com/5274/5810163712_53996cbd0a_o.jpg */
 
-  background: url(../../../../images/frontBG.png) 0 0 no-repeat fixed;
+  background: url(../../../../images/frontBG2.png) 0 0 no-repeat;
   background-position: left;
   height: 100%;
   overflow: hidden;
@@ -6756,3 +6756,6 @@ i.darkred:hover {
     height: 500px;
   }
 }
+
+/*JEPP*/
+

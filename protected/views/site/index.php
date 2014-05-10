@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-md-12">
 					<h2 class="text-center">
-					<span class="bigintro">About Us</span>
+					<span class="bigintro">E M E R G E</span>
 					</h2>
 			</div>
 		</div>
@@ -36,3 +36,32 @@
 	</section>
 </section>
 <!--/SOCIAL BAR -->
+
+<div class="modal fade" id="box-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  	<div class="modal-content">
+			<div class="modal-header">
+		  		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		  		<h4 class="modal-title">Need help?</h4>
+			</div>
+			<div class="modal-body">
+				Enter your phone number here: <br>
+		  		<input type="text" name="" id="" class="control-form" placeholder="e.g. 09191234567">
+			</div>
+			<div class="modal-footer">
+			  	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  	<button type="button" class="btn btn-primary">Submit</button>
+			</div>
+	  </div>
+</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$('#ebutton').on('mousedown', function(){
+			$(this).attr('src','images/buttonPress.png');
+		}).on('mouseup', function() {
+			$(this).attr('src', 'images/buttonActive.png');
+		});
+	});
+</script>
