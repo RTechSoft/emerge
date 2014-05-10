@@ -3,6 +3,9 @@ var EMERGE = {};
 EMERGE.common = {
 	init: function() {
 		commonClass = this;
+		$('.sidebar-menu').slimScroll({
+			height: '500px'
+		});
 	},
 
 	notify: function() {
@@ -51,7 +54,6 @@ EMERGE.common = {
 			// 	$scope.notifs = snapshot;
 			// });
 			$scope.notifs = fb;
-			console.log(fb);
 		});
 	}
 }

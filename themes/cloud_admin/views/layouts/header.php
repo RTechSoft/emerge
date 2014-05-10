@@ -32,7 +32,7 @@
 				</li>
 			<?php } else if(Yii::app()->user->userType == 2) { ?>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle tip-bottom" title="Dashboard">
+					<a href="<?php echo Yii::app()->createUrl('agency/dashboard'); ?>" class="dropdown-toggle tip-bottom" title="Dashboard">
 						<span class="name">Dashboard</span>
 					</a>
 				</li>
@@ -69,7 +69,7 @@
 						<li><a href="#">Profile Settings</a></li>
 						<li><a href="<?php echo Yii::app()->createUrl('site/logout'); ?>"><i class="fa fa-power-off"></i> Log Out</a></li>
 					<?php } else if(Yii::app()->user->userType == 2){ ?>
-						<li><a href="#">Profile Settings</a></li>
+						<li><a href="<?php echo Yii::app()->createUrl('agency/profile'); ?>">Profile Settings</a></li>
 						<li><a href="<?php echo Yii::app()->createUrl('site/logout'); ?>">Logout</a></li>
 					<?php } ?>
 				</ul>
