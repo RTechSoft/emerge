@@ -17,31 +17,12 @@
 			<div class="box-body">
 				<div class="tabbable header-tabs user-profile">
 					<ul class="nav nav-tabs">
-					   <li><a href="#pro_edit" id="agencyTab1" data-toggle="tab"><i class="fa fa-edit"></i> <span class="hidden-inline-mobile"> Edit Account</span></a></li>
 					   <li class="active"><a href="#pro_overview" id="agencyTab2" data-toggle="tab"><i class="fa fa-dot-circle-o"></i> <span class="hidden-inline-mobile">Overview</span></a></li>
 					</ul>
 					<div class="tab-content">
 					   <div class="tab-pane fade in active" id="pro_overview">
-						  <div class="row">
-							<div class="col-md-3">
-								<div class="list-group">
-								  <li class="list-group-item zero-padding">
-									<center><img alt="" class="img-responsive" src="http://t2.tagstat.com/im/people/silhouette_m_300.png" style="margin:3px;"></center>
-								  </li>
-								  <div class="list-group-item profile-details">
-										<h2><?php echo $agency->agency_name; ?></h2>
-										<span class="span">
-								 </div>
-								  <a href="#" class="list-group-item"><?php echo AgencyTypes::getAgencyType($agency->agency_type); ?></a>
-								  <a href="#" class="list-group-item"><?php echo ($agency->location_scope == "")?"Location Range Not Yet Registered":$agency->location_scope; ?></a>
-								  <a href="#" class="list-group-item" id="location_text"></a>	
-								</div>														
-							</div>
-						  </div>
-					   </div>
-					   <div class="tab-pane fade" id="pro_edit">
-					   		<div class="row">
-					   			<form role="form" name="agency_update_form" method="POST" action="<?php echo $this->createUrl('agency/update'); ?>">
+					   <div class="row">
+					   			<form role="form" name="agency_update_form" method="POST" action="<?php echo $this->createUrl('agency/update',array('id'=>Yii::app()->user->id)); ?>">
 									<div class="col-md-4">
 										<div class="box border">
 											<div class="box-title">
@@ -64,7 +45,10 @@
 											  </div>
 											  <input type="text" readonly id="location1" name="location1" value="<?php $agency->agency_location; ?>">
 											  <input type="text" readonly id="location2" name="location2" value="<?php $agency->agency_location2; ?>">
-											  <input type="text" readonly id="scope" name="location_scope" value="<?php $agency->location_scope; ?>">
+											  <div class="form-group">
+												<label for="location_text">Location</label>
+												<input type="text" class="form-control" id="location_text" readonly value="Use the pin on the map to change location">
+											  </div>
 											  <h4>Login credentials</h4>
 											  <div class="form-group">
 												<label for="agency_username">Username</label>
@@ -82,6 +66,9 @@
 								</form>
 							</div>
 					   </div>
+					   <div class="tab-pane fade" id="pro_edit">
+					   		
+					   </div>
 					</div>
 				</div>
 			</div>
@@ -95,9 +82,6 @@
 	$lng = '<?php echo $agency->agency_location2; ?>';
 	$(document).ready(function(){
 		getAgencyLocationForProfile($lat,$lng);
-		$('.agencyTab1').click(function(){
-			getAgencyLocationForProfile($lat,$lng);
-		});
 	});
 	$(window).resize(function(){
 		getAgencyLocationForProfile($lat,$lng);
