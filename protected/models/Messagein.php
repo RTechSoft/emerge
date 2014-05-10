@@ -170,12 +170,12 @@ class Messagein extends CActiveRecord
 	public static function addHelpRequest($value){
 		$help = new HelpRequests();
 		$help->sender_number = $value['number'];
-		$help->location_scope = $value['location_scope'];
-		if($value['sender_location']){
+		if($value['sender_location'] && $value['sender_location2']){
 			$help->sender_location = $value['sender_location'];
+			$help->sender_location2 = $value['sender_location2'];
 		}
-		if($value['alt_location']){
-			$help->alt_location = $value['alt_location'];
+		if($value['alternate_location']){
+			$help->alternate_location = $value['alternate_location'];
 		}
 		$help->status = 0;
 		$help->save();
