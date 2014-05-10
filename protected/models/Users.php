@@ -19,7 +19,9 @@
  * @property string $user_photo
  */
 class Users extends CActiveRecord
-{
+{	
+	private $_identity;
+	public $rememberMe;
 	/**
 	 * @return string the associated database table name
 	 */

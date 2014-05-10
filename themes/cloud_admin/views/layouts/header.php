@@ -21,35 +21,45 @@
 	
 		<!-- navbar left -->
 		<ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
-			<li class="dropdown">
-				<a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Team View">
-					<i class="fa fa-users"></i>
-					<span class="name">Team Status</span>
-					<i class="fa fa-angle-down"></i>
-				</a>
-			</li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle tip-bottom" title="Test">
-					<span class="name">Test</span>
-				</a>
-			</li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					<span class="name">Skins</span>
-					<i class="fa fa-angle-down"></i>
-				</a>
-				<ul class="dropdown-menu skins">
-					<li class="dropdown-title">
-						<span><i class="fa fa-leaf"></i> Theme Skins</span>
-					</li>
-					<li><a href="#" data-skin="default">Subtle (default)</a></li>
-					<li><a href="#" data-skin="night">Night</a></li>
-					<li><a href="#" data-skin="earth">Earth</a></li>
-					<li><a href="#" data-skin="utopia">Utopia</a></li>
-					<li><a href="#" data-skin="nature">Nature</a></li>
-					<li><a href="#" data-skin="graphite">Graphite</a></li>
-				 </ul>
-			</li>
+			<?php if(Yii::app()->user->userType == 1) { ?>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle tip-bottom" title="Test">
+						<span class="name">Test</span>
+					</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<span class="name">Assets</span>
+						<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Manage</a></li>
+					</ul>
+				</li>
+			<?php } else if(Yii::app()->user->userType == 2) { ?>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle tip-bottom" title="Test">
+						<span class="name">Dashboard</span>
+					</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle tip-bottom" title="Test">
+						<span class="name">Assets</span>
+					</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle tip-bottom" title="Test">
+						<span class="name">Help Logs</span>
+					</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Team View">
+						<i class="fa fa-users"></i>
+						<span class="name">Team Status</span>
+						<i class="fa fa-angle-down"></i>
+					</a>
+				</li>
+			<?php } ?>
 		</ul>
 
 		<!-- top nav -->
@@ -57,15 +67,18 @@
 			<li class="dropdown user pull-right" id="header-user">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<img src="<?php echo Yii::app()->theme->baseUrl.'/library/img/avatars/avatar3.jpg'; ?>" >
-					<span class="username">Junerey Casuga</span>
+					<span class="username"><?php echo Yii::app()->user->name; ?></span>
 					<i class="fa fa-angle-down"></i>
 				</a>
 
 				<ul class="dropdown-menu">
-					<li><a href="#"><i class="fa fa-user"></i> My Profile</a></li>
-					<li><a href="#"><i class="fa fa-cog"></i> Account Settings</a></li>
-					<li><a href="#"><i class="fa fa-eye"></i> Privacy Settings</a></li>
-					<li><a href="login.html"><i class="fa fa-power-off"></i> Log Out</a></li>
+					<?php if(Yii::app()->user->userType == 1){ ?>
+						<li><a href="#">Profile Settings</a></li>
+						<li><a href="<?php echo Yii::app()->createUrl('site/logout'); ?>"><i class="fa fa-power-off"></i> Log Out</a></li>
+					<?php } else if(Yii::app()->user->userType == 2){ ?>
+						<li><a href="#">Profile Settings</a></li>
+						<li><a href="<?php echo Yii::app()->createUrl('site/logout'); ?>">Logout</a></li>
+					<?php } ?>
 				</ul>
 			</li>
 		</ul>

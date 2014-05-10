@@ -37,9 +37,11 @@ class UserIdentity extends CUserIdentity
 		if($checker == 'mobile' || $checker == 'username') {
 			$this->setState('username', $userRecord->secondary_username);
 			$this->setState('name', $userRecord->user_firstname . ' ' . $userRecord->user_lastname);
+			$this->setState('userType', 1);
 		} else if($checker === 'agency') {
 			$this->setState('username', $userRecord->agency_username);
 			$this->setState('name', $userRecord->agency_name);
+			$this->setState('userType', 2);
 		}
 
 		return $this->errorCode=self::ERROR_NONE;
