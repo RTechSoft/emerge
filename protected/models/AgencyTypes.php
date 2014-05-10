@@ -91,4 +91,13 @@ class AgencyTypes extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public static function getAgencyType($id){
+		if($id == 0){
+			return "Organization Type Not Set";
+		}else{
+			$model = self::model()->findByPk($id);
+			return $model->type;
+		}
+	}
 }

@@ -131,6 +131,18 @@ class SiteController extends Controller
 			}
 		}
 
+		if(isset($_POST['Users']) && isset($_POST['btnRegisterUser'])) {
+			$modelUsers->attributes = $_POST['Users'];
+			$modelUsers->user_mobile = $_POST['Users']['primary_username'];
+			$modelUsers->registration_type = 1;
+
+			if($modelUsers->validate() && $modelUsers->save()) {
+				echo 'user registration success';
+			} else {
+				echo 'user registration failed';
+			}
+		}
+
 		$this->render('login', array('modelUsers'=>$modelUsers, 'modelAgencies'=>$modelAgencies));
 	}
 

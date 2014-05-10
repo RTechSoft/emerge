@@ -11,7 +11,8 @@ return array(
 
 	'import'=>array(
 		'application.models.*',
-		'application.components.*'
+		'application.components.*',
+		'ext.firebase.*',
 	),
 
 	// application components
