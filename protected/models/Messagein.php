@@ -174,8 +174,8 @@ class Messagein extends CActiveRecord
 		$firebase->set('sender_number', $help->sender_number);
 
 		$help->location_scope = $value['location_scope'];
-		if($value['sender_location']){
-			$help->sender_location = $value['sender_location'];
+		if($value['sender_location'] && $value['sender_location2']){
+			$help->sender_location = $value['sender_location'] . ',' . $value['sender_location2'];
 		}
 		if($value['alt_location']){
 			$help->alt_location = $value['alt_location'];
@@ -197,9 +197,17 @@ class Messagein extends CActiveRecord
 
 			if($help->sender_location) {
 				$firebase->set('requests/'.$help->id.'/sender_location', $help->sender_location);
+				$firebase->set('requests/'.$help->id.'/class', 'coordinate');
+				$firebase->set('requests/'.$help->id.'/option', $help->sender_location);
+			} else {
+				$firebase->set('requests/'.$help->id.'/sender_location', "null");
 			}
 
 			if($help->alt_location) {
+				$firebase->set('requests/'.$help->id.'/class', 'address');
+				$firebase->set('requests/'.$help->id.'/alt_location', $help->alt_location);
+				$firebase->set('requests/'.$help->id.'/option', $help->alt_location);
+			} else {
 				$firebase->set('requests/'.$help->id.'/alt_location', $help->alt_location);
 			}
 		}
