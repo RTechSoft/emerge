@@ -38,22 +38,22 @@
 				</li>
 			<?php } else if(Yii::app()->user->userType == 2) { ?>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle tip-bottom" title="Test">
+					<a href="#" class="dropdown-toggle tip-bottom" title="Dashboard">
 						<span class="name">Dashboard</span>
 					</a>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle tip-bottom" title="Test">
+					<a href="#" class="dropdown-toggle tip-bottom" title="Assets">
 						<span class="name">Assets</span>
 					</a>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle tip-bottom" title="Test">
+					<a href="#" class="dropdown-toggle tip-bottom" title="Help Logs">
 						<span class="name">Help Logs</span>
 					</a>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Team View">
+					<a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Tracker">
 						<span class="name">Track</span>
 						<i class="fa fa-angle-down"></i>
 					</a>

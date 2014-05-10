@@ -141,7 +141,7 @@ class SiteController extends Controller
 
 			if($modelUsers->validate() && $modelUsers->save()) {
 				echo 'user registration success';
-				$this->redirect('site/login');
+				$this->redirect('login');
 			} else {
 				echo 'user registration failed';
 			}
@@ -154,7 +154,7 @@ class SiteController extends Controller
 
 			if($modelAgencies->validate() && $modelAgencies->save()) {
 				echo 'user registration success';
-				$this->redirect('site/login');
+				$this->redirect('login');
 			} else {
 				echo 'user registration failed';
 			}
