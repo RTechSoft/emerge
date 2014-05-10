@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-sm-12">
+	<div class="col-md-12">
 		<div class="page-header">
 			<div class="clearfix">
 				<br/>
@@ -9,7 +9,20 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-sm-3">
+	<div class="box border primary">
+		<div class="box-title">
+			<h4><i class="fa fa-compass"></i>Map</h4>
+		</div>
+		<div class="box-body requests-panel" ng-controller="NotifCtrl">
+			<div ng-repeat="notifications in notifs | orderByPriority | reverse" class="{{ notifications.class }} request {{ notifications.sender_number }} alert alert-block alert-danger fade in" data-id="{{ notifications.$id }}" data-option="{{ notifications.option }}">
+				<h4><i class="fa fa-user"></i> {{ notifications.name }}</h4>
+					<p>{{ notifications.sender_number }}</p>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="col-md-5">
 		<div class="box border primary">
 			<div class="box-title">
 				<h4><i class="fa fa-compass"></i>Map</h4>
@@ -37,11 +50,13 @@
 	var directionsService = new google.maps.DirectionsService();
 	$lat = '<?php echo $agency->agency_location; ?>';
 	$lng = '<?php echo $agency->agency_location2; ?>';
+	$latLng = $lat+","+$lng;
+	$latLng = $latLng.toString();
 	$(document).ready(function(){
-		getAgencyLocation($lat,$lng);
-		getRoute($lat,$lng);
+		getAgencyLocation($latLng);
+		getRoute();
 	});
 	$(window).resize(function(){
-		getAgencyLocation($lat,$lng);
+		getAgencyLocation($latLng);
 	});
 </script>

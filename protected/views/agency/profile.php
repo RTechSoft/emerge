@@ -8,6 +8,11 @@
 		</div>
 	</div>
 </div>
+<?php if($agency->agency_location  == "" || $agency->agency_location2  == ""){ ?>
+	<div class="alert alert-block alert-danger fade in">
+		<b><i class="fa fa-warning"></i> Address not yet set. Please update profile to be able to access dashboard.</b>
+	</div>
+<?php } ?>
 <div class="row">
 	<div class="col-md-12">
 		<div class="box border primary">
