@@ -4,23 +4,17 @@
 			<!-- logo -->
 			<a href="#">
 				<img src="<?php echo Yii::app()->request->baseUrl.'/images/logo.png'; ?>" class="img-responsive" height="30" width="120">
-			</a>
-			<!-- team status for mobile -->
-			<div class="visible-xs">
-				<a href="#" class="team-status-toggle switcher btn dropdown-toggle">
-					<i class="fa fa-users"></i>
-				</a>
-			</div>
+			</a
 			<!-- sidebar collapse -->
-			<div id="sidebar-collapse" class="sidebar-collapse btn">
-				<i class="fa fa-bars" 
-					data-icon1="fa fa-bars" 
-					data-icon2="fa fa-bars" ></i>
+			<div id="sidebar-collapse" class="sidebar-collapse btn visible-xs">
+				<i class="fa fa-users" 
+					data-icon1="fa fa-users" 
+					data-icon2="fa fa-users" ></i>
 			</div>
 		</div>
 	
 		<!-- navbar left -->
-		<ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
+		<ul class="nav navbar-nav pull-left">
 			<?php if(Yii::app()->user->userType == 1) { ?>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle tip-bottom" title="Test">

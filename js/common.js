@@ -51,6 +51,7 @@ EMERGE.common = {
 			// 	$scope.notifs = snapshot;
 			// });
 			$scope.notifs = fb;
+			console.log(fb);
 		});
 	}
 }
