@@ -116,33 +116,16 @@ function getAddressThroughGeolocation(lat,lng){
 //mapping
 function getAgencyLocation(address1,address2){
 	directionsDisplay = new google.maps.DirectionsRenderer();
+	pos = new google.maps.LatLng(address1,address2);
 	var mapOptions = {
-      zoom: 18
+      zoom : 18,
+      center : pos
     };
 
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
-    if(address1 == "" || address2 == ""){
-    	navigator.geolocation.getCurrentPosition(function(position) {
-		    var pos = new google.maps.LatLng(position.coords.latitude,
-		                                     position.coords.longitude);
-		      map.setCenter(pos);
-
-		}, function() {
-		    alert('something went wrong');
-		});
-    }else{
-    	pos = new google.maps.LatLng(address1,address2);
-    	map.setCenter(pos);
-		
-    }
-
     directionsDisplay.setMap(map);
 	directionsDisplay.setPanel(document.getElementById('directions-panel'));
-
-	var control = document.getElementById('control');
-	control.style.display = 'block';
-	map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 }
 
 
