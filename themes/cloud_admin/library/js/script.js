@@ -2465,10 +2465,7 @@ var App = function () {
 	/*-----------------------------------------------------------------------------------*/
 	var handleBackstretch = function () {
 		 $.backstretch([
-		"img/login/1.jpg"
-		, "img/login/2.jpg"
-		, "img/login/3.jpg"
-		, "img/login/4.jpg"
+		"../themes/cloud_admin/library/img/login/1.jpg"
 		], {duration: 3000, fade: 750});
 	}
 	/*-----------------------------------------------------------------------------------*/
@@ -3184,7 +3181,7 @@ var App = function () {
             if (App.isPage("index")) {
 				handleDateTimePickers(); //Function to display Date Timepicker
 				handleSparkline();		//Function to display Sparkline charts
-				handleDashFlotCharts(); //Function to display flot charts in dashboard
+				// handleDashFlotCharts(); //Function to display flot charts in dashboard
 				handleChat('chat-window'); //Function to handle chat
 				handleCalendar();	//Function to display calendar
 				handleGritter();	//Function to display Gritter notifications

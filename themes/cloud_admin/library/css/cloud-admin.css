@@ -8285,17 +8285,23 @@ div[data-role="editor-toolbar"] {
   display: none;
 }
 #login_bg,
+#userlogin_bg,
+#agencylogin_bg,
 #register_bg,
 #forgot_bg {
   display: none;
 }
 #login_bg a,
+#userlogin_bg a,
+#agencylogin_bg a,
 #register_bg a,
 #forgot_bg a {
   color: #FFFFFF;
   text-decoration: underline;
 }
 #login_bg a:hover,
+#userlogin_bg a:hover,
+#agencylogin_bg a:hover,
 #register_bg a:hover,
 #forgot_bg a:hover {
   text-decoration: none;
