@@ -51,53 +51,6 @@ function getAgencyLocationForProfile(address1,address2){
 	  });
 }
 
-//mapping
-function getAgencyLocation(address1,address2){
-	var mapOptions = {
-      zoom: 18
-    };
-
-    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
-    if(address1 == "" || address2 == ""){
-    	navigator.geolocation.getCurrentPosition(function(position) {
-		    var pos = new google.maps.LatLng(position.coords.latitude,
-		                                     position.coords.longitude);
-		      map.setCenter(pos);
-		      var marker = new google.maps.Marker({
-		        position: pos,
-		        map: map,
-		        draggable:true
-		      });
-
-		      markers.push(marker);
-		      google.maps.event.addListener(marker, 'mouseup', function(e) {
-		        placeMarker(e.latLng, map);
-		      });
-
-		}, function() {
-		    alert('Something went wrong. Check your internet connection.');
-		});
-    }else{
-    	pos = new google.maps.LatLng(address1,address2);
-    	map.setCenter(pos);
-		var marker = new google.maps.Marker({
-			position: pos,
-			map: map,
-			draggable:true
-		});
-
-		markers.push(marker);
-		google.maps.event.addListener(marker, 'mouseup', function(e) {
-		placeMarker(e.latLng, map);
-		});
-    }
-    
-    google.maps.event.addListener(map, 'click', function(e) {
-	    placeMarker(e.latLng, map);
-	  });
-}
-
 //modifiers
 function placeMarker(position, map){
 	deleteMarkers();
@@ -159,9 +112,62 @@ function getAddressThroughGeolocation(lat,lng){
 	});
 }
 
-function getRoute(lat,lng){
-	$('.request').click(function(){
-		alert('aw');
+
+//mapping
+function getAgencyLocation(address1,address2){
+	directionsDisplay = new google.maps.DirectionsRenderer();
+	var mapOptions = {
+      zoom: 18
+    };
+
+    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+    if(address1 == "" || address2 == ""){
+    	navigator.geolocation.getCurrentPosition(function(position) {
+		    var pos = new google.maps.LatLng(position.coords.latitude,
+		                                     position.coords.longitude);
+		      map.setCenter(pos);
+
+		}, function() {
+		    alert('something went wrong');
+		});
+    }else{
+    	pos = new google.maps.LatLng(address1,address2);
+    	map.setCenter(pos);
+		
+    }
+
+    directionsDisplay.setMap(map);
+	directionsDisplay.setPanel(document.getElementById('directions-panel'));
+
+	var control = document.getElementById('control');
+	control.style.display = 'block';
+	map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+}
+
+
+function getRoute(latLng){
+	
+	$(".requests-panel").on("click", ".request", function() {
+		$classList = $(this).attr('class').split(" ");
+		$number = $classList[2];
+		$id = $(this).attr("data-id");
+		$address = $(this).attr("data-option");
+		if($classList[0] == "address"){
+			var request = {
+			    origin: latLng,
+			    destination: $address,
+			    provideRouteAlternatives: true,
+			    travelMode: google.maps.TravelMode.DRIVING
+			};
+			directionsService.route(request, function(response, status) {
+			    if (status == google.maps.DirectionsStatus.OK) {
+			      directionsDisplay.setDirections(response);
+			    }
+			});
+		}else{
+			return true;
+		}
 	});
 }
 	

@@ -99,4 +99,16 @@ class HelpLogs extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public static function respondToRequest($id){
+		$requestData = HelpRequests::model()->findByPk($id);
+
+		$model = new HelpLogs();
+
+		$model->request_id = $id;
+		$model->agency_id = Yii::app()->user->id;
+		$model->status = 0;
+
+		$model->save();
+	}
 }

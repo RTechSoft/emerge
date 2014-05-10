@@ -23,12 +23,7 @@
 	
 	<!-- main content -->
 	<section id="page">
-		<?php
-		if(Yii::app()->user->userType==2){
-			$this->renderPartial('//layouts/sidebar');
-		}
-		?>
-		<div id="main-content">
+		<div>
 			<div class="container">
 				<div class="row">
 					<div id="content" class="col-lg-12">
