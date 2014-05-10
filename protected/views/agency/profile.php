@@ -43,11 +43,11 @@
 													  <?php } ?>
 												</select>
 											  </div>
-											  <input type="text" readonly id="location1" name="location1" value="<?php $agency->agency_location; ?>">
-											  <input type="text" readonly id="location2" name="location2" value="<?php $agency->agency_location2; ?>">
+											  <input type="hidden" readonly id="location1" name="location1" value="<?php $agency->agency_location; ?>">
+											  <input type="hidden" readonly id="location2" name="location2" value="<?php $agency->agency_location2; ?>">
 											  <div class="form-group">
 												<label for="location_text">Location</label>
-												<input type="text" class="form-control" id="location_text" readonly value="Use the pin on the map to change location">
+												<input type="text" class="form-control" id="location_text" readonly>
 											  </div>
 											  <h4>Login credentials</h4>
 											  <div class="form-group">
