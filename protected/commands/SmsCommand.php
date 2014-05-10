@@ -6,6 +6,7 @@ class SmsCommand extends CConsoleCommand{
 			$num = str_replace("+63", "0", $val['MessageFrom']);
 			$checkNumberIfExist = Users::model()->findByAttributes(array("primary_username" => $num));
 			$chunks = explode(" ", $val['MessageText']);
+			$userNumber = rand(1000,9999);
 			if(strpos($val['MessageText'],'REG') !== false){
 				if(!$checkNumberIfExist){
 					$arrayHolder['number'] = $num;
@@ -37,27 +38,35 @@ class SmsCommand extends CConsoleCommand{
 						}
 					}
 					else{
-						// Messagein::sendSms("Register%20first.%20Please%20follow%20this%20format:%20REG%20[firstname]%20[lastname]",$num);
-						echo "Register first. Please follow this format: REG [firstname] [lastname]";
+						$arrayHolder['number'] = $num;
+						$arrayHolder['username'] = "user".$userNumber;
+						Messagein::signUpUserFromMobile($arrayHolder);
+						// Messagein::sendSms("Successfully%20Registered.%20Here%20is%20your%20secondary%20username%20".$arrayHolder['username'],$num);
+						echo "Successfully Registered. Here is your secondary username ".$arrayHolder['username'];
+						// Messagein::sendSms("Address%20Required.%20Please%20follow%20this%20format:%20HELP%20[address]",$num);
+						echo "Address Required. Please follow this format: HELP [address]";
 					}
 				}
 				else{
+					$add = "";
 					if($checkNumberIfExist){
-						$add = "";
 						$arrayHolder['number'] = $checkNumberIfExist['primary_username'];
-						for($i=1; $i<count($chunks); $i++){
-							$add=$add." ".$chunks[$i];
-						}
-
-						$arrayHolder['alternate_location'] = ltrim($add, ' ');
-						Messagein::addHelpRequest($arrayHolder);
-						echo "Help request sent.";
-						// Messagein::sendSms("Help%20request%20sent.",$num);
 					}
 					else{
-						// Messagein::sendSms("Register%20first.%20Please%20follow%20this%20format:%20REG%20[firstname]%20[lastname]",$num);
-						echo "Register first. Please follow this format: REG [firstname] [lastname]";
+						$arrayHolder['number'] = $num;
+						$arrayHolder['username'] = "user".$userNumber;
+						Messagein::signUpUserFromMobile($arrayHolder);
+						// Messagein::sendSms("Successfully%20Registered.%20Here%20is%20your%20secondary%20username%20".$arrayHolder['username'],$num);
+						echo "Successfully Registered. Here is your secondary username ".$arrayHolder['username'];
 					}
+					for($i=1; $i<count($chunks); $i++){
+						$add=$add." ".$chunks[$i];
+					}
+
+					$arrayHolder['alternate_location'] = ltrim($add, ' ');
+					Messagein::addHelpRequest($arrayHolder);
+					echo "Help request sent.";
+					// Messagein::sendSms("Help%20request%20sent.",$num);
 				}
 			}else if(strpos($val['MessageText'],'COMPLETE') !== false){
 				$checkLogsExists = HelpLogs::model()->findByPk($chunks[1]);

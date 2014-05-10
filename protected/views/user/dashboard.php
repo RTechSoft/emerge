@@ -52,8 +52,8 @@
 												<input type="text" class="form-control" name="secondary_username" id="secondary_username" value="<?php echo $user->secondary_username; ?>">
 											</div>
 											<div class="form-group">
-												<label for="username">Password</label>
-												<input type="password" class="form-control" name="password" id="password" placeholder="Leave blank if will not be edited">
+												<label for="username">Password*</label>
+												<input type="password" class="form-control" name="password" id="password" >
 											</div>
 											<input type="submit" value="Update" name="update" class="btn btn-primary">
 										</div>
@@ -70,7 +70,7 @@
 		</div>
 	</div>
 </div>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 <script>
 	markers = [];
 	$lat = '<?php echo $agency->agency_location; ?>';
@@ -84,4 +84,4 @@
 	$(window).resize(function(){
 		getAgencyLocationForProfile($lat,$lng);
 	});
-</script>
+</script> -->

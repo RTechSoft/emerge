@@ -97,4 +97,30 @@ class AssetManager extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public static function listAssets($id){
+		$model = Yii::app()->db->createCommand()
+			->select('*')
+			->from('asset_manager')
+			->where('agency_id = :id',array(':id'=>$id))
+			->queryAll();
+
+		return $model;
+	}
+
+	public static function addAssets($id,$asset,$quantity){
+		$query = new AssetManager();
+		$query->agency_id = $id;
+		$query->assets = $asset;
+		$query->quantity = $quantity;
+		$query->save();
+	}
+
+	public static function editAssets($id,$asset,$quantity){
+		$query = AssetManager::model()->findByPk($id);
+		$query->assets = $asset;
+		$query->quantity = $quantity;
+		$query->save();
+	}
+
 }
