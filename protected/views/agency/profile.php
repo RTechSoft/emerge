@@ -23,10 +23,10 @@
 					   <div class="tab-pane fade in active" id="pro_overview">
 					   <div class="row">
 					   			<form role="form" name="agency_update_form" method="POST" action="<?php echo $this->createUrl('agency/update',array('id'=>Yii::app()->user->id)); ?>">
-									<div class="col-md-4">
-										<div class="box border">
+									<div class="col-md-6">
+										<div class="box border primary">
 											<div class="box-title">
-												<h4><i class="fa fa-bars"></i>Agency Information</h4>
+												<h4><i class="fa fa-building-o"></i>Agency Information</h4>
 											</div>
 											<div class="box-body big">
 											  <h4>Basic Information</h4>
@@ -46,7 +46,7 @@
 											  <input type="hidden" readonly id="location1" name="location1" value="<?php $agency->agency_location; ?>">
 											  <input type="hidden" readonly id="location2" name="location2" value="<?php $agency->agency_location2; ?>">
 											  <div class="form-group">
-												<label for="location_text">Location</label>
+												<label for="location_text">Location (Move pin or click on map to change location)</label>
 												<input type="text" class="form-control" id="location_text" readonly>
 											  </div>
 											  <h4>Login credentials</h4>
@@ -62,7 +62,16 @@
 											</div>
 										</div>
 									</div>
-									<div id="map_canvas" style="margin:auto;min-height:600px;" class="col-md-7"></div>
+									<div class="col-md-6">
+										<div class="box border primary">
+											<div class="box-title">
+												<h4><i class="fa fa-compass"></i>Map</h4>
+											</div>
+											<div class="box-body">
+												<div id="map_canvas" class="gmaps" style="position:relative"></div>
+											</div>
+										</div>
+									</div>
 								</form>
 							</div>
 					   </div>
