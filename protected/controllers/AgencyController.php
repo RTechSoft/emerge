@@ -9,7 +9,8 @@ class AgencyController extends Controller
 
 	public function actionProfile(){
 		$agencyInfo = Agencies::model()->findByPk(Yii::app()->user->id);
-		$this->render('profile',array('agency'=>$agencyInfo));
+		$agencyTypes = AgencyTypes::model()->findAll();
+		$this->render('profile',array('agency'=>$agencyInfo,'types'=>$agencyTypes));
 	}
 
 	public function actionLogs() {
