@@ -147,8 +147,6 @@ class SiteController extends Controller
 				}
 			} else {
 				$this->redirect('login');
-			} else {
-				echo 'user registration failed';
 			}
 		}
 
