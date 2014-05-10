@@ -109,6 +109,13 @@ class HelpLogs extends CActiveRecord
 		$model->agency_id = Yii::app()->user->id;
 		$model->status = 0;
 
-		$model->save();
+		if($model->save()){
+			$user = Users::model()->findByAttributes(array('sender_number'=>$requestData->sender_number));
+			$firebase = new Firebase('https://emerge.firebaseio.com/', '3lyQRefcRqTwtRVvkwHwYK8VxXpyJ0KiBe1RaK5b');
+
+			$firebase->set('logs/'.$model->id.'/requester', $user->user_firstname . ' ' . $user->user_lastname);
+			$firebase->set('logs/'.$model->id.'/requester_contact', $user->primary_username);
+			$firebase->set('logs/'.$model->d.'/agency_id', $model->agency_id);
+		}
 	}
 }
