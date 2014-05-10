@@ -12,7 +12,7 @@ class AgencyController extends Controller
 		return array(
 			array(
 				'allow',
-				'actions'=>array('dashboard','profile','logs','update','assets'),
+				'actions'=>array('dashboard','profile','logs','update','assets','setAssets'),
 				'expression'=>function(){
 					if(Yii::app()->user->isGuest){
 						return false;
@@ -31,7 +31,11 @@ class AgencyController extends Controller
 
 	public function actionDashboard(){
 		$agencyInfo = Agencies::model()->findByPk(Yii::app()->user->id);
-		$this->render('index',array('agency'=>$agencyInfo));
+		if($agencyInfo->agency_location != ""){
+			$this->render('index',array('agency'=>$agencyInfo));	
+		}else{
+			$this->redirect(array('agency/profile'));
+		}
 	}
 
 	public function actionProfile(){
@@ -66,5 +70,15 @@ class AgencyController extends Controller
 
 	public function actionAssets(){
 		$assetsInfo = AssetManager::model()->findAllByAttributes(array('agency_id'=>Yii::app()->user->id));
+	}
+
+	public function actionSetAssets($id){
+		$assetsInfo = AssetManager::model()->findAllByAttributes(array('agency_id'=>Yii::app()->user->id));
+		$this->render('set',array('assets'=>$assetsInfo));
+	}
+
+	public function actionRespond($id){
+		HelpLogs::respondToRequest($id);
+		$this->redirect(array('agency/dashboard'));
 	}
 }
