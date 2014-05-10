@@ -70,7 +70,7 @@
 		</div>
 	</div>
 </div>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 <script>
 	markers = [];
 	$lat = '<?php echo $agency->agency_location; ?>';
@@ -84,4 +84,4 @@
 	$(window).resize(function(){
 		getAgencyLocationForProfile($lat,$lng);
 	});
-</script>
+</script> -->
