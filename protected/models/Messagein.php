@@ -134,7 +134,7 @@ class Messagein extends CActiveRecord
 	}
 	
 	public static function sendSms($message,$num){
-		$url = "http://mui4ever:9710/http/send-message?to=".$num."&message=".$message."&gateway=Emerge";
+		$url = "http://localhost:9710/http/send-message?to=".$num."&message=".$message."&gateway=Emerge";
 		
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
@@ -148,7 +148,19 @@ class Messagein extends CActiveRecord
 
 	public static function updateSmsStatus($id){
 		$updateStatus = Messagein::model()->findByAttributes(array('Id'=>$id));
-		$updateStatus->Reply_status=1;
+		$updateStatus->Status=1;
 		$updateStatus->save();
+	}
+
+	public static function signUpUserFromMobile($value){
+		$mobileSignUp = new Users();
+		$mobileSignUp->primary_username = $value['number'];
+		$mobileSignUp->user_password = "1234";
+		$mobileSignUp->user_firstname = $value['fname'];
+		$mobileSignUp->user_lastname = $value['lname'];
+		$mobileSignUp->registration_type = 2;
+		$mobileSignUp->user_mobile = $value['number'];
+		$mobileSignUp->save();
+
 	}
 }
