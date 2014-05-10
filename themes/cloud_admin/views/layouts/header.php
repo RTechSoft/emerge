@@ -54,8 +54,7 @@
 				</li>
 				<li class="dropdown">
 					<a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Team View">
-						<i class="fa fa-users"></i>
-						<span class="name">Team Status</span>
+						<span class="name">Track</span>
 						<i class="fa fa-angle-down"></i>
 					</a>
 				</li>
