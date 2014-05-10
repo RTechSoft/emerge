@@ -136,21 +136,19 @@ function getRoute(latLng){
 		$number = $classList[2];
 		$id = $(this).attr("data-id");
 		$address = $(this).attr("data-option");
-		if($classList[0] == "address"){
-			var request = {
-			    origin: latLng,
-			    destination: $address,
-			    provideRouteAlternatives: true,
-			    travelMode: google.maps.TravelMode.DRIVING
-			};
-			directionsService.route(request, function(response, status) {
-			    if (status == google.maps.DirectionsStatus.OK) {
-			      directionsDisplay.setDirections(response);
-			    }
-			});
-		}else{
-			return true;
-		}
+		
+		var request = {
+		    origin: latLng,
+		    destination: $address,
+		    provideRouteAlternatives: true,
+		    travelMode: google.maps.TravelMode.DRIVING
+		};
+		directionsService.route(request, function(response, status) {
+		    if (status == google.maps.DirectionsStatus.OK) {
+		      directionsDisplay.setDirections(response);
+		    }
+		});
+		
 	});
 }
 	
