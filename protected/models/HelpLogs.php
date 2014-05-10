@@ -82,7 +82,7 @@ class HelpLogs extends CActiveRecord
 		$criteria->compare('request_id',$this->request_id);
 		$criteria->compare('agency_id',$this->agency_id);
 		$criteria->compare('response_date',$this->response_date,true);
-		criteria->compare('status',$this->status);
+		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -152,6 +152,7 @@ class Messagein extends CActiveRecord
 		$updateStatus->save();
 	}
 
+	//users.php
 	public static function signUpUserFromMobile($value){
 		$mobileSignUp = new Users();
 		$mobileSignUp->primary_username = $value['number'];
@@ -163,4 +164,30 @@ class Messagein extends CActiveRecord
 		$mobileSignUp->save();
 
 	}
+	//end
+
+	//helprequest.php
+	public static function addHelpRequest($value){
+		$help = new HelpRequests();
+		$help->sender_number = $value['number'];
+		$help->location_scope = $value['location_scope'];
+		if($value['sender_location']){
+			$help->sender_location = $value['sender_location'];
+		}
+		if($value['alt_location']){
+			$help->alt_location = $value['alt_location'];
+		}
+		$help->status = 0;
+		$help->save();
+	}
+	//end
+
+	//helplogs.php
+	public static function completeHelpLog($id){
+		$updateStatus = HelpLogs::model()->findByPk($id);
+		$updateStatus->status=1;
+		$updateStatus->save();
+	}
+	//end
+
 }
