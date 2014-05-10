@@ -50,7 +50,7 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-4">
 				<div class="logo" >
-					<a href="index.html"><img src="img/logo/logo.png" height="40" alt="logo name"/></a>
+					<a href="index.html"><img src="images/logo.png" height="40" alt="logo name"/></a>
 				</div>
 			</div>
 			<div class="col-sm-9 col-md-8">

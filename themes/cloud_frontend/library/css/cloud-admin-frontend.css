@@ -6109,7 +6109,7 @@ ul.list-inline {
 #header {
   /* Image credit: http://farm6.staticflickr.com/5274/5810163712_53996cbd0a_o.jpg */
 
-  background: url(../img/bg.jpg) 0 0 no-repeat fixed;
+  background: url(images/frontBG.png) 0 0 no-repeat fixed;
   height: 100%;
   overflow: hidden;
   color: #f4f4f4;
