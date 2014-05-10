@@ -137,7 +137,7 @@ class SiteController extends Controller
 			$modelUsers->attributes = $_POST['Users'];
 			$modelUsers->user_mobile = $_POST['Users']['primary_username'];
 			$modelUsers->registration_type = 1;
-			$modelUsers->user_password = $_POST['Users']['password'];
+			$modelUsers->user_password = $_POST['Users']['user_password'];
 
 			if($modelUsers->validate() && $modelUsers->save()) {
 				echo 'user registration success';

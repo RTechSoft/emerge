@@ -3,7 +3,7 @@
 		<div class="navbar-brand">
 			<!-- logo -->
 			<a href="#">
-				<img src="<?php echo Yii::app()->theme->baseUrl.'/library/img/logo/logo.png'; ?>" class="img-responsive" height="30" width="120">
+				<img src="<?php echo Yii::app()->request->baseUrl.'/images/logo.png'; ?>" class="img-responsive" height="30" width="120">
 			</a>
 			<!-- team status for mobile -->
 			<div class="visible-xs">

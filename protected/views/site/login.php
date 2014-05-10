@@ -4,7 +4,7 @@
 			<div class="col-md-4 col-md-offset-4">
 				<div id="logo">
 					<a href="#">
-						<img src="<?php echo Yii::app()->theme->baseUrl.'/library/img/logo/logo.png'; ?>" height="40" alt="Emerge">
+						<img src="<?php echo Yii::app()->request->baseUrl.'/images/logo.png'; ?>" height="40" alt="Emerge">
 					</a>
 				</div>
 			</div>
