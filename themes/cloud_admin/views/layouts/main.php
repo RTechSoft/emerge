@@ -17,7 +17,7 @@
 	?>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body ng-app="emerge">
 	<!-- header -->
 	<?php $this->renderPartial('//layouts/header'); ?>
 	
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<?php
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/jquery/jquery-2.0.3.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js');
@@ -61,12 +61,19 @@
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/gritter/js/jquery.gritter.min.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/map.js');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/js/script.js');
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/angularfire/angular.min.js');
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/angularfire/firebase.js');
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/angularfire/angularfire.min.js');
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/common.js');
 	?>
 	<script>
 		jQuery(document).ready(function() {
 			App.setPage("index");
 			App.init();
-		})
+		});
+
+		EMERGE.common.init();
+		EMERGE.common.notify();
 	</script>
 </body>
 </html>

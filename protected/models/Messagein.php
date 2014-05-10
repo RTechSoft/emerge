@@ -169,7 +169,10 @@ class Messagein extends CActiveRecord
 	//helprequest.php
 	public static function addHelpRequest($value){
 		$help = new HelpRequests();
+
 		$help->sender_number = $value['number'];
+		$firebase->set('sender_number', $help->sender_number);
+
 		$help->location_scope = $value['location_scope'];
 		if($value['sender_location']){
 			$help->sender_location = $value['sender_location'];
@@ -178,7 +181,30 @@ class Messagein extends CActiveRecord
 			$help->alt_location = $value['alt_location'];
 		}
 		$help->status = 0;
-		$help->save();
+		if($help->save()){
+			$firebase = new Firebase('https://emerge.firebaseio.com/', '3lyQRefcRqTwtRVvkwHwYK8VxXpyJ0KiBe1RaK5b');
+
+			$user = Users::model()->findByAttributes(array('sender_number'=>$help->sender_number));
+			
+			if($user) {
+				$firebase->set('requests/'.$help->id.'/name', $user->user_firstname . ' ' . $user->user_lastname);
+			} else {
+				$firebase->set('requests/'.$help->id.'/name', "Anonymous");
+			}
+
+			$firebase->set('requests/'.$help->id.'/sender_number',  $help->sender_number);
+			$firebase->set('requests/'.$help->id.'/location_scope', $help->location_scope);
+
+			if($help->sender_location) {
+				$firebase->set('requests/'.$help->id.'/sender_location', $help->sender_location);
+			}
+
+			if($help->alt_location) {
+				$firebase->set('requests/'.$help->id.'/alt_location', $help->alt_location);
+			}
+		}
+
+
 	}
 	//end
 
