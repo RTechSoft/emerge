@@ -4,7 +4,7 @@
 
 		<!-- sidebar menu -->
 		<ul>
-			<li ng-repeat="notifications in notifs | orderByPriority | reverse" class="{{ notifications.class }}" data-id="{{ notifications.$id }}" data-option="{{ notifications.option }}">
+			<li ng-repeat="notifications in notifs | orderByPriority | reverse" class="{{ notifications.class }} request {{ notifications.sender_number }}" data-id="{{ notifications.$id }}" data-option="{{ notifications.option }}">
 				<a href="#">
 					<span class="menu-text">{{ notifications.name }}</span>
 					<br>
