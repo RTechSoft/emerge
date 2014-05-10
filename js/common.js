@@ -37,7 +37,9 @@ EMERGE.common = {
 
 			dataRef.on('child_added', function (snapshot) {
 				if (!newNotifs) return;
-				console.log(snapshot.val());
+				$.gritter.add({
+					title: snapshot.val().name + ' is asking for help',
+				});
 			});
 
 			dataRef.once('value', function (snapshot) {
