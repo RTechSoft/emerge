@@ -54,7 +54,7 @@ function getAgencyLocationForProfile(address1,address2){
 //mapping
 function getAgencyLocation(address1,address2){
 	var mapOptions = {
-      zoom: 17
+      zoom: 18
     };
 
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
@@ -156,6 +156,12 @@ function getAddressThroughGeolocation(lat,lng){
 		} else {
 			alert('Something went wrong. Check your internet connection.');
 		}
+	});
+}
+
+function getRoute(lat,lng){
+	$('.request').click(function(){
+		alert('aw');
 	});
 }
 	
