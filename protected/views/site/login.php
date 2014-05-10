@@ -116,7 +116,7 @@
 						)
 					)); ?>
 						<div class="form-group">
-							<label>Userame</label>
+							<label>Username</label>
 							<i class="fa fa-user"></i>
 							<?php echo $form->textField($modelUsers, 'secondary_username', array('class'=>'form-control')); ?>
 						</div>
@@ -145,7 +145,14 @@
 							<i class="fa fa-user"></i>
 							<?php echo $form->textField($modelUsers, 'user_lastname', array('class'=>'form-control')); ?>
 						</div>
+						<div>
+							<button type="submit" class="btn btn-danger" name="btnRegisterUser">Register</button>
+						</div>
 					<?php $this->endWidget(); ?>
+					<div class="divide-20"></div>
+					<div class="login-helpers">
+						Already have an account? Login <a href="#" onclick="swapScreen('userlogin_bg');return false;" style="color:white; text-decoration:underline;">here</a>
+					</div>
 				</div>
 			</div>
 		</div>

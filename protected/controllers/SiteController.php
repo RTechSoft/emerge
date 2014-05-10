@@ -132,11 +132,11 @@ class SiteController extends Controller
 		}
 
 		if(isset($_POST['Users']) && isset($_POST['btnRegisterUser'])) {
-			$modelUser->attributes = $_POST['Users'];
-			$modelUser->user_mobile = $_POST['Users']['primary_username'];
-			$modelUser->registration_type = 1;
+			$modelUsers->attributes = $_POST['Users'];
+			$modelUsers->user_mobile = $_POST['Users']['primary_username'];
+			$modelUsers->registration_type = 1;
 
-			if($modelUser->validate() && $modelUser->save()) {
+			if($modelUsers->validate() && $modelUsers->save()) {
 				echo 'user registration success';
 			} else {
 				echo 'user registration failed';
