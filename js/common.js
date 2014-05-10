@@ -44,10 +44,11 @@ EMERGE.common = {
 				newNotifs = true;
 			});
 
-			fb.$on('loaded', function (snapshot) {
-				console.log(snapshot);
-				$scope.notifs = snapshot;
-			});
+			// fb.$on('loaded', function (snapshot) {
+			// 	console.log(snapshot);
+			// 	$scope.notifs = snapshot;
+			// });
+			$scope.notifs = fb;
 		});
 	}
 }
