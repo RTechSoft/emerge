@@ -8,7 +8,7 @@
 
 		<!-- sidebar menu -->
 		<ul>
-			<li ng-repeat="notifications in notifs">
+			<li ng-repeat="notifications in notifs | orderByPriority | reverse">
 				<a href="#">
 					<span class="menu-text">{{ notifications.name }}</span>
 					<br>
