@@ -27,7 +27,7 @@
 					<li><a href="../login.html" class="external">Login</a></li>
 				</ul>
 				<h1>
-					<img src="<?php echo Yii::app()->theme->baseUrl.'/library/'; ?>img/logo/logo.png" height="50" alt="logo name">
+					<img src="images/logo.png" height="50" alt="logo name">
 				</h1>
 				<h1 class="page-title">Beautiful responsive frontend theme</h1>
 				<h4 class="page-sub-title">In the end, it's not going to matter how many breath you took, 

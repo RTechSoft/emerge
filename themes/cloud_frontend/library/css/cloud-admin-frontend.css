@@ -42,6 +42,7 @@ html {
 }
 body {
   margin: 0;
+  background-color: #f6f6f6;
 }
 a {
   background: transparent;
@@ -6398,7 +6399,7 @@ ul.list-inline {
   }
 }
 #nav-bar {
-  background-color: #5e87b0;
+  background-color: #353535;
   height: auto;
   position: fixed;
   top: -75px;
