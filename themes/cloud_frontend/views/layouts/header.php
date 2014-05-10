@@ -1,12 +1,7 @@
 <section id="header">
-<<<<<<< HEAD
-<div class="pushbutt"></div>
-	<center><img src="images/buttonActive.png" style="margin-top:-100px;"></a></center>
-=======
 	<div class="pushbutt" style="width:1024px; margin: 0 auto;">
 		<a href="#box-config" data-toggle="modal" class="config"><img src="images/buttonActive.png" style="margin-top:-100px; margin-left:auto; margin-right:auto;" id="ebutton"></a>			
 	</div>
->>>>>>> c1ef90b92733d875af3fcc420d96434a412dbce6
 </section>
 <!--/HEADER -->
 <!-- NAV-BAR -->
