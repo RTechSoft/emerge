@@ -105,6 +105,47 @@
 				<div class="login-box">
 					<h2 class="bigintro">Register</h2>
 					<div class="divide-40"></div>
+					<?php $form=$this->beginwidget('CActiveForm', array(
+						'id'=>'userregistration-form',
+						'enableClientValidation'=>true,
+						'clientOptions'=>array(
+							'validateOnSubmit'=>true
+						),
+						'htmlOptions'=>array(
+							'role'=>'form'
+						)
+					)); ?>
+						<div class="form-group">
+							<label>Userame</label>
+							<i class="fa fa-user"></i>
+							<?php echo $form->textField($modelUsers, 'secondary_username', array('class'=>'form-control')); ?>
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<i class="fa fa-lock"></i>
+							<?php echo $form->passwordField($modelUsers, 'user_password', array('class'=>'form-control')); ?>
+						</div>
+						<div class="form-group">
+							<label>Phone Number</label>
+							<i class="fa fa-mobile-phone"></i>
+							<?php echo $form->textField($modelUsers, 'primary_username', array('class'=>'form-control')); ?>
+						</div>
+						<div class="form-group">
+							<label>First name</label>
+							<i class="fa fa-user"></i>
+							<?php echo $form->textField($modelUsers, 'user_firstname', array('class'=>'form-control')); ?>
+						</div>
+						<div class="form-group">
+							<label>Middle name</label>
+							<i class="fa fa-user"></i>
+							<?php echo $form->textField($modelUsers, 'user_middlename', array('class'=>'form-control')); ?>
+						</div>
+						<div class="form-group">
+							<label>Last name</label>
+							<i class="fa fa-user"></i>
+							<?php echo $form->textField($modelUsers, 'user_lastname', array('class'=>'form-control')); ?>
+						</div>
+					<?php $this->endWidget(); ?>
 				</div>
 			</div>
 		</div>
