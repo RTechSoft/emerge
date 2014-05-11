@@ -33,6 +33,33 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
+		if(isset($_POST['Help']) && isset($_POST['btnHelp'])) {
+			$user = Users::model()->findByAttributes(array("primary_username"=>$_POST['Help']['number']));
+			$userNumber = rand(1000,9999);
+
+			if($user){
+				$array['number'] = $user->primary_username;
+				$array['sender_location'] = $user->user_address;
+				$array['sender_location'] = $user->user_address2;
+				$array['alternate_location'] = "";
+				$array['location_scope'] = "";
+
+				Messagein::addHelpRequest($array);
+			} else {
+				$array['number'] = $_POST['Help']['number'];
+				$array['username'] = "user".$userNumber;
+				$array['fname'] = "Anonymous";
+				$array['lname'] = "User";
+				$array['sender_location'] = $user->user_address;
+				$array['sender_location'] = $user->user_address2;
+				$array['alternate_location'] = "";
+				$array['location_scope'] = "";
+
+				Messagein::signUpUserFromMobile($array);
+				Messagein::addHelpRequest($array);
+			}
+		}
+
 		$this->render('index', array($this->setFrontendTheme()));
 	}
 

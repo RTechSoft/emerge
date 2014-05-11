@@ -44,14 +44,26 @@
 		  		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		  		<h4 class="modal-title">Need help?</h4>
 			</div>
+			<?php $form=$this->beginWidget('CActiveForm', array(
+				'id'=>'help-form',
+				'enableClientValidation'=>true,
+				'clientOptions'=>array(
+					'validateOnSubmit'=>true
+				),
+				'htmlOptions'=>array(
+					'role'=>'form'
+				)
+			)); ?>
 			<div class="modal-body">
 				Enter your phone number here: <br>
-		  		<input type="text" name="" id="" class="control-form" placeholder="e.g. 09191234567">
+		  		<input type="text" name="Help[number]" id="" class="control-form" placeholder="e.g. 09191234567">
+
 			</div>
 			<div class="modal-footer">
 			  	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			  	<button type="button" class="btn btn-primary">Submit</button>
+			  	<button type="submit" class="btn btn-primary" name="btnHelp">Submit</button>
 			</div>
+			<?php $this->endWidget(); ?>
 	  </div>
 </div>
 </div>
