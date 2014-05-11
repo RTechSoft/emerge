@@ -97,4 +97,14 @@ class ActiveAssets extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public static function getRemaining($id){
+		$active = self::model()->findAllByAttributes(array('agency_id'=>Yii::app()->user->id, 'asset_id'=>$id));
+		$total = 0;
+		foreach($active as $value){
+			$total = $total+$value->quantity;
+		}
+		return $total;
+
+	}
 }

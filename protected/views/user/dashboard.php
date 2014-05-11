@@ -41,7 +41,12 @@
 											<div class="form-group">
 												<label for="lastname">Last Name</label>
 												<input type="text" class="form-control" name="lastname" id="lastname" value="<?php echo $user->user_lastname; ?>">
-											</div>	
+											</div>
+											<div class="form-group">
+												<label for="location_text">User Location</label>
+												<input type="text" class="form-control" readonly id="location_text" placeholder="LOADING LOCATION...">
+												<input type="hidden" name="location1" id="location1"> <input type="hidden" name="location2" id="location2">
+											</div>
 											<h4>Login credentials</h4>
 											<div class="form-group">
 												<label for="primary_username">Primary Username</label>
@@ -53,7 +58,7 @@
 											</div>
 											<div class="form-group">
 												<label for="username">Password*</label>
-												<input type="password" class="form-control" name="password" id="password" >
+												<input type="password" class="form-control" name="password" id="password" placeholder="Leave blank if will not be edited">
 											</div>
 											<input type="submit" value="Update" name="update" class="btn btn-primary">
 										</div>
@@ -70,18 +75,15 @@
 		</div>
 	</div>
 </div>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 <script>
 	markers = [];
-	$lat = '<?php echo $agency->agency_location; ?>';
-	$lng = '<?php echo $agency->agency_location2; ?>';
+	$lat = '<?php echo $user->user_address; ?>';
+	$lng = '<?php echo $user->user_address2; ?>';
 	$(document).ready(function(){
-		getAgencyLocationForProfile($lat,$lng);
-		$('.agencyTab1').click(function(){
-			getAgencyLocationForProfile($lat,$lng);
-		});
+		getUserLocationForProfile($lat,$lng);
 	});
 	$(window).resize(function(){
-		getAgencyLocationForProfile($lat,$lng);
+		getUserLocationForProfile($lat,$lng);
 	});
-</script> -->
+</script>

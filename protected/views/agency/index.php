@@ -8,11 +8,16 @@
 		</div>
 	</div>
 </div>
+<?php if(isset($_GET['respond'])){ ?>
+	<div class="alert alert-block alert-success fade in">
+		<b><i class="fa fa-check"></i> Request response posted.</b>
+	</div>
+<?php } ?>
 <div class="row">
 	<div class="col-sm-3">
 	<div class="box border primary">
 		<div class="box-title">
-			<h4><i class="fa fa-compass"></i>Map</h4>
+			<h4><i class="fa fa-bullhorn"></i>Requests</h4>
 		</div>
 		<div class="box-body requests-panel">
 			<div ng-repeat="notifications in notifs | orderByPriority | reverse" class="{{ notifications.class }} request {{ notifications.sender_number }} alert alert-block alert-danger fade in" data-id="{{ notifications.$id }}" data-option="{{ notifications.option }}">
@@ -36,7 +41,7 @@
 	<div class="col-md-4">
 		<div class="box border primary" style="height:610px">
 			<div class="box-title">
-				<h4><i class="fa fa-compass"></i>Route Info</h4>
+				<h4><i class="fa fa-arrows"></i>Route Info</h4>
 			</div>
 			<div class="box-body" id="directions-panel">
 			</div>

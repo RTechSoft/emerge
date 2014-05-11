@@ -12,7 +12,7 @@ class AgencyController extends Controller
 		return array(
 			array(
 				'allow',
-				'actions'=>array('dashboard','profile','logs','update','assets','setAssets'),
+				'actions'=>array('dashboard','profile','logs','update','assets','setAssets','respond'),
 				'expression'=>function(){
 					if(Yii::app()->user->isGuest){
 						return false;
@@ -58,11 +58,6 @@ class AgencyController extends Controller
 		$model->agency_location = $_POST['location1'];
 		$model->agency_location2 = $_POST['location2'];
 		$model->agency_username = $_POST['agency_username'];
-		if(isset($_POST['agency_password'])){
-			$TPassword = new TPassword();
-			$password = $TPassword->hash($_POST['agency_password']);
-			$model->agency_password = $password;
-		}
 
 		$model->save();
 		$this->redirect(array('agency/profile'));
@@ -78,7 +73,7 @@ class AgencyController extends Controller
 	}
 
 	public function actionRespond($id){
-		HelpLogs::respondToRequest($id);
-		$this->redirect(array('agency/dashboard'));
+		HelpLogs::respondToRequest($id,$_POST);
+		$this->redirect(array('agency/dashboard','respond'=>true));
 	}
 }
