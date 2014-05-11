@@ -62,9 +62,11 @@ class AgencyController extends Controller
 		$model->agency_location = $_POST['location1'];
 		$model->agency_location2 = $_POST['location2'];
 		$model->agency_username = $_POST['agency_username'];
+		$TPassword = new TPassword();
+		$model->agency_password = $TPassword->hash($_POST['agency_username']);
 
 		$model->save();
-		$this->redirect(array('agency/profile'));
+		$this->redirect(array('agency/profile','respond'=>true));
 	}
 
 	public function actionAssets(){

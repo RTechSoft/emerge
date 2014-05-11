@@ -8,6 +8,11 @@
 		</div>
 	</div>
 </div>
+<?php if(isset($_GET['respond'])){ ?>
+	<div class="alert alert-block alert-success fade in">
+		<b><i class="fa fa-check"></i> Profile updated.</b>
+	</div>
+<?php } ?>
 <div class="row">
 	<div class="col-md-12">
 		<div class="box border primary">
