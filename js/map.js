@@ -51,6 +51,59 @@ function getAgencyLocationForProfile(address1,address2){
 	  });
 }
 
+//mapping
+
+function getUserLocationForProfile(address1,address2){
+	var mapOptions = {
+      zoom: 18
+    };
+
+    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+    if(address1 == "" || address2 == ""){
+    	navigator.geolocation.getCurrentPosition(function(position) {
+		    var pos = new google.maps.LatLng(position.coords.latitude,
+		                                     position.coords.longitude);
+		      $('#location1').val(position.coords.latitude);
+			  $('#location2').val(position.coords.longitude);
+			  getAddressThroughGeolocation(position.coords.latitude,position.coords.longitude);
+		      map.setCenter(pos);
+		      var marker = new google.maps.Marker({
+		        position: pos,
+		        map: map,
+		        draggable:true
+		      });
+
+		      markers.push(marker);
+		      google.maps.event.addListener(marker, 'mouseup', function(e) {
+		        placeMarker2(e.latLng, map);
+		      });
+
+		}, function() {
+		    alert('something went wrong');
+		});
+    }else{
+    	pos = new google.maps.LatLng(address1,address2);
+    	$('#location1').val(address1);
+		$('#location2').val(address2);
+		getAddressThroughGeolocation(address1,address2);
+    	map.setCenter(pos);
+		var marker = new google.maps.Marker({
+			position: pos,
+			map: map,
+			draggable:true
+		});
+
+		markers.push(marker);
+		google.maps.event.addListener(marker, 'mouseup', function(e) {
+			placeMarker2(e.latLng, map);
+		});
+    }
+    google.maps.event.addListener(map, 'click', function(e) {
+	    placeMarker2(e.latLng, map);
+	  });
+}
+
 //modifiers
 function placeMarker(position, map){
 	deleteMarkers();

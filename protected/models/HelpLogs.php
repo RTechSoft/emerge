@@ -100,9 +100,18 @@ class HelpLogs extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public static function respondToRequest($id){
+	public static function respondToRequest($id,$assets){
 		$requestData = HelpRequests::model()->findByPk($id);
+		for($counter = 0; $counter < sizeOf($assets['asset']); $counter++){
+			$modelAsset = new ActiveAssets();
+			$modelAsset->agency_id = Yii::app()->user->id;
+			$modelAsset->asset_id = $assets['id'][$counter];
+			$modelAsset->help_log_id = $id;
+			$modelAsset->quantity = $assets['asset'][$counter];
 
+			$modelAsset->save();
+
+		}
 		$model = new HelpLogs();
 
 		$model->request_id = $id;

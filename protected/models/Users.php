@@ -176,7 +176,8 @@ class Users extends CActiveRecord
 		$edit->primary_username = $data['primary'];
 		$edit->secondary_username = $data['secondary'];
 		$edit->user_password = $data['pword'];
-		
+		$edit->user_address = $data['address1'];
+		$edit->user_address2 = $data['address2'];
 		$edit->save();
 	}
 }

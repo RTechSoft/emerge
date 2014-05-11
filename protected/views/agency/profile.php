@@ -52,16 +52,12 @@
 											  <input type="hidden" readonly id="location2" name="location2" value="<?php $agency->agency_location2; ?>">
 											  <div class="form-group">
 												<label for="location_text">Location (Move pin or click on map to change location)</label>
-												<input type="text" class="form-control" id="location_text" readonly>
+												<input type="text" class="form-control" id="location_text" readonly placeholder="LOADING LOCATION...">
 											  </div>
 											  <h4>Login credentials</h4>
 											  <div class="form-group">
 												<label for="agency_username">Username</label>
 												<input type="text" class="form-control" name="agency_username" id="agency_username" value="<?php echo $agency->agency_username; ?>">
-											  </div>
-											  <div class="form-group">
-												<label for="agency_username">Password</label>
-												<input type="password" class="form-control" name="agency_password" id="agency_password" placeholder="Leave blank if will not be edited">
 											  </div>
 											</div>
 
