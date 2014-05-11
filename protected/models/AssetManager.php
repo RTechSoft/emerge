@@ -109,11 +109,18 @@ class AssetManager extends CActiveRecord
 	}
 
 	public static function addAssets($id,$asset,$quantity){
-		$query = new AssetManager();
-		$query->agency_id = $id;
-		$query->assets = $asset;
-		$query->quantity = $quantity;
-		$query->save();
+		$checkIfExist = AssetManager::model()->findByAttributes(array('asset'=>$asset,'agency_id'=>$id));
+		if ($checkIfExist) {
+			$checkIfExist->quantity += $quantity;
+			$checkIfExist->save();
+		}
+		else{
+			$query = new AssetManager();
+			$query->agency_id = $id;
+			$query->asset = $asset;
+			$query->quantity = $quantity;
+			$query->save();
+		}
 	}
 
 	public static function editAssets($id,$asset,$quantity){

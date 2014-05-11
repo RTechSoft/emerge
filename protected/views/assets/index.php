@@ -35,6 +35,7 @@
 										  		<tr id="<?php echo $value['id']; ?>" class="assetValue">	
 										  			<td><?php echo $value['asset']; ?></td>
 										  			<td><?php echo $value['quantity']; ?></td>
+										  			<td><a href="<?php echo $this->createUrl('assets/delete')."/".$value['id']; ?>">Delete</a></td>
 										  		</tr>
 										  	<?php } ?>
 										</tbody>
@@ -55,7 +56,8 @@
 				</div>
 				<div class="box-body">
 					<div class="box">
-						<form name="youraction">
+						<form name="youraction" method="POST" action="<?php echo $this->createUrl('assets/index'); ?>">
+							<input type="hidden" class="form-control" name="assetid">
 							<div class="form-group">
 								<label for="asset">Asset Name</label>
 								<input type="text" class="form-control" name="asset" id="asset">
@@ -76,11 +78,17 @@
 <script>
 	$(document).ready(function(){
 		$('#assetTab').click(function(){
+			$('.actionBox').fadeOut('slow');
 			$('.actionBox').fadeIn('slow');
+			$('input[name="update"]').addClass('hide')
+			$('input[name="add"]').removeClass('hide')
 		});
 		$('.assetValue').click(function(){
 			$('.actionBox').fadeOut('slow');
 			$('.actionBox').fadeIn('slow');
+			$('input[name="add"]').addClass('hide')
+			$('input[name="update"]').removeClass('hide')
+			$('#id').val('aw');
 		})
 	});
 </script>
