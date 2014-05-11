@@ -13,6 +13,11 @@
 		<b><i class="fa fa-warning"></i> Address not yet set. Please update profile to be able to access dashboard.</b>
 	</div>
 <?php } ?>
+<?php if(isset($_GET['respond'])){ ?>
+	<div class="alert alert-block alert-success fade in">
+		<b><i class="fa fa-check"></i> Profile updated.</b>
+	</div>
+<?php } ?>
 <div class="row">
 	<div class="col-md-12">
 		<div class="box border primary">
@@ -58,6 +63,10 @@
 											  <div class="form-group">
 												<label for="agency_username">Username</label>
 												<input type="text" class="form-control" name="agency_username" id="agency_username" value="<?php echo $agency->agency_username; ?>">
+											  </div>
+											  <div class="form-group">
+												<label for="agency_username">Password</label>
+												<input type="password" class="form-control" name="agency_password" id="agency_username" placeholder="Enter password to confirm update" required>
 											  </div>
 											</div>
 
