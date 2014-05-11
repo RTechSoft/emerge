@@ -19,13 +19,19 @@
 			</thead>
 			<tbody>
 				<?php if($model){ ?>
-					<?php foreach($model as $key=>$value){ ?>
 					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
+					<?php foreach($model as $value){ ?>
+						<td><?php echo $value['id']; ?></td>
+						<td><?php echo $value['response_date']; ?></td>
+						<td>
+							<?php if($value['status'] == 0) {
+								echo 'On Going';
+							} else {
+								echo 'Done';
+							} ?>
+						</td>
 					<?php } ?>
+					</tr>
 				<?php } else { ?>
 				<tr>
 					<td colspan="3">No data</td>

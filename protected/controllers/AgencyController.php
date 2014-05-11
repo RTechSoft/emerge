@@ -45,7 +45,11 @@ class AgencyController extends Controller
 	}
 
 	public function actionLogs() {
-		$model = HelpLogs::model()->findByAttributes(array('agency_id'=>Yii::app()->user->id));
+		// $model = Yii::app()->db->createCommand()
+		// 	->select('users.user_firstname as firstname, users.user_lastname as lastname, agencies.agency_name, help_logs.response_date, help_logs.status')
+		// 	->from('help_logs')
+			->leftJoin()
+		$model = HelpLogs::model()->findAllByAttributes(array('agency_id'=>Yii::app()->user->id));
 		
 		$this->render('logs', array('model'=>$model));
 	}
