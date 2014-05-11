@@ -14,11 +14,11 @@ class SmsCommand extends CConsoleCommand{
 					$arrayHolder['lname'] = $chunks[2];
 					Messagein::signUpUserFromMobile($arrayHolder);
 					echo "Successfully registered.";
-					// Messagein::sendSms("Successfully%20registered.",$num);
+					Messagein::sendSms("Successfully%20registered.",$num);
 				}
 				else{
 					echo $num." is already registered.";
-					// Messagein::sendSms($num."%20is%20already%20registered.",$num);
+					Messagein::sendSms($num."%20is%20already%20registered.",$num);
 				}
 			}else if(strpos($val['MessageText'],'HELP') !== false){
 				if(count($chunks)==1){
@@ -30,18 +30,20 @@ class SmsCommand extends CConsoleCommand{
 							$arrayHolder['alternate_location'] = "";
 							Messagein::addHelpRequest($arrayHolder);
 							echo "Help request sent.";
-							// Messagein::sendSms("Help%20request%20sent.",$num);
+							Messagein::sendSms("Help%20request%20sent.",$num);
 						}
 						else{
-							// Messagein::sendSms("Address%20Required.%20Please%20follow%20this%20format:%20HELP%20[address]",$num);
+							Messagein::sendSms("Address%20Required.%20Please%20follow%20this%20format:%20HELP%20[address]",$num);
 							echo "Address Required. Please follow this format: HELP [address]";
 						}
 					}
 					else{
 						$arrayHolder['number'] = $num;
 						$arrayHolder['username'] = "user".$userNumber;
+						$arrayHolder['fname'] = "Anonymous";
+						$arrayHolder['lname'] = "User";
 						Messagein::signUpUserFromMobile($arrayHolder);
-						// Messagein::sendSms("Successfully%20Registered.%20Here%20is%20your%20secondary%20username%20".$arrayHolder['username'],$num);
+						Messagein::sendSms("Successfully%20Registered.%20Here%20is%20your%20secondary%20username%20".$arrayHolder['username']."%20Address%20Required.%20Please%20follow%20this%20format:%20HELP%20[address]",$num);
 						echo "Successfully Registered. Here is your secondary username ".$arrayHolder['username'];
 						// Messagein::sendSms("Address%20Required.%20Please%20follow%20this%20format:%20HELP%20[address]",$num);
 						echo "Address Required. Please follow this format: HELP [address]";
@@ -53,6 +55,9 @@ class SmsCommand extends CConsoleCommand{
 						$arrayHolder['number'] = $checkNumberIfExist['primary_username'];
 					}
 					else{
+						$arrayHolder['number'] = $num;
+						$arrayHolder['fname'] = "Anonymous";
+						$arrayHolder['lname'] = "User";
 						$arrayHolder['number'] = $num;
 						$arrayHolder['username'] = "user".$userNumber;
 						Messagein::signUpUserFromMobile($arrayHolder);
@@ -66,17 +71,17 @@ class SmsCommand extends CConsoleCommand{
 					$arrayHolder['alternate_location'] = ltrim($add, ' ');
 					Messagein::addHelpRequest($arrayHolder);
 					echo "Help request sent.";
-					// Messagein::sendSms("Help%20request%20sent.",$num);
+					Messagein::sendSms("Your%20request%20has%20been%20sent.%20Please%20wait%20for%20our%20follow%20up%20call%20for%20confirmation.",$num);
 				}
 			}else if(strpos($val['MessageText'],'COMPLETE') !== false){
 				$checkLogsExists = HelpLogs::model()->findByPk($chunks[1]);
 				if($checkLogsExists){
 					Messagein::completeHelpLog($chunks[1]);
 					echo "Log ".$chunks[1]." is complete.";
-					// Messagein::sendSms("Log%20".$chunks[1]."%20is%20complete.",$num);
+					Messagein::sendSms("Log%20".$chunks[1]."%20is%20already%20done.",$num);
 				}
 				else{
-					// Messagein::sendSms("Log%20".$chunks[1]."%20not%20found.",$num);
+					Messagein::sendSms("Log%20".$chunks[1]."%20not%20found.",$num);
 					echo "Log ".$chunks[1]." not found.";
 				}
 			}

@@ -193,7 +193,7 @@ class Messagein extends CActiveRecord
 		if($help->save()){
 			$firebase = new Firebase('https://emerge.firebaseio.com/', '3lyQRefcRqTwtRVvkwHwYK8VxXpyJ0KiBe1RaK5b');
 
-			$user = Users::model()->findByAttributes(array('user_mobile'=>$help->sender_number));
+			$user = Users::model()->findByAttributes(array('primary_username'=>$help->sender_number));
 			
 			if($user) {
 				$firebase->set('requests/'.$help->id.'/name', $user->user_firstname . ' ' . $user->user_lastname);
