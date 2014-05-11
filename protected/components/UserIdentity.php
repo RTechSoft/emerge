@@ -19,6 +19,7 @@ class UserIdentity extends CUserIdentity
 
 	public function authenticate()
 	{
+		// echo $this->password;exit;
 		$checker = Users::usernameChecker($this->username);
 		
 		if($checker == 'mobile') {

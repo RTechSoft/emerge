@@ -145,7 +145,7 @@ class SiteController extends Controller
 			if($modelUsers->validate() && $modelUsers->login()) {
 				$this->redirect(array('user/dashboard'));
 			} else {
-				$modelUsers->user_password = '';
+				$this->redirect(array('site/login'));
 			}
 		}
 
@@ -156,7 +156,7 @@ class SiteController extends Controller
 			if($modelAgencies->validate() && $modelAgencies->login()) {
 				$this->redirect(array('agency/dashboard'));
 			} else {
-				$modelAgencies->agency_password = '';
+				$this->redirect(array('site/login'));
 			}
 		}
 
