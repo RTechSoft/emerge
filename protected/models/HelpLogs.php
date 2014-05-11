@@ -118,7 +118,11 @@ class HelpLogs extends CActiveRecord
 		$model->agency_id = Yii::app()->user->id;
 		$model->status = 0;
 
+
+
 		if($model->save()){
+			$msg = "Your%20request%20has%20been%20processed.%20Help%20is%20on%20the%20way.";
+			Messagein::sendSms($msg,$requestData->sender_number);
 			$user = Users::model()->findByAttributes(array('sender_number'=>$requestData->sender_number));
 			$firebase = new Firebase('https://emerge.firebaseio.com/', '3lyQRefcRqTwtRVvkwHwYK8VxXpyJ0KiBe1RaK5b');
 

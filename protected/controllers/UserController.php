@@ -15,7 +15,7 @@ class UserController extends Controller
 			$data['address2'] = $_POST['location2'];
 			$data['pword'] = $_POST['password'];
 			Users::editUser($data);
-			$this->redirect(array('user/dashboard'));
+			$this->redirect(array('user/dashboard','respond'=>true));
 		}
 		$this->render('dashboard',array('user'=>$userInfo));
 	}
