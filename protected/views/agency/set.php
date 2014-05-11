@@ -21,8 +21,9 @@
 					</ul>
 					<div class="tab-content">
 					   <div class="tab-pane fade in active" id="assets">
+					   <form method="POST" action="<?php echo $this->createUrl('agency/respond',array('id'=>$_GET['id'])); ?>">
 					   	<?php if(count($assets) > 0){ ?>
-					   		<form method="POST" action="<?php echo $this->createUrl('agency/respond',array('id'=>$_GET['id'])); ?>">
+					   		
 					   			<table>
 					   				<thead>
 						   				<tr>
@@ -45,18 +46,20 @@
 								   	<tfoot>
 								   		<tr>
 								   			<td>
-								   				<input type="submit" class="btn btn-primary" value="Respond">
-								   				<a href="<?php echo $this->createUrl('agency/dashboard'); ?>"><input type="submit" class="btn btn-danger" value="Cancel"></a>
+								   				
 								   			</td>
 								   		</tr>
 								   	</tfoot>
 					   			</table>
-					   		</form>
+					   		
 					   	<?php }else{ ?>
 					   		<div class="alert alert-block alert-danger fade in">
 								<b><i class="fa fa-warning"></i> You don't have registered assets at the moment.</b>
 							</div>
 					   	<?php } ?>
+					   	<input type="submit" class="btn btn-primary" value="Respond">
+								   				<a href="<?php echo $this->createUrl('agency/dashboard'); ?>"><input type="submit" class="btn btn-danger" value="Cancel"></a>
+					   	</form>
 					   </div>
 					</div>
 				</div>
